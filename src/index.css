@@ -37,7 +37,8 @@ All colors MUST be HSL.
     --input: 214 20% 90%;
     --ring: 45 100% 50%;
 
-    --radius: 0.6rem;
+    --radius: 0rem;
+    --radius-button: 0.6rem;
 
     /* Sidebar */
     --sidebar-background: 0 0% 98%;
@@ -84,6 +85,9 @@ All colors MUST be HSL.
     --border: 220 15% 18%;
     --input: 220 15% 18%;
     --ring: 45 100% 50%;
+
+    --radius: 0rem;
+    --radius-button: 0.6rem;
 
     --sidebar-background: 220 15% 10%;
     --sidebar-foreground: 210 40% 98%;

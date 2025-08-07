@@ -22,7 +22,7 @@ export const Hero = () => {
 
   return (
     <section ref={ref} className="relative mt-8">
-      <div className="relative overflow-hidden rounded-xl shadow-[var(--shadow-elevated)]">
+      <div className="relative overflow-hidden rounded-none shadow-[var(--shadow-elevated)]">
         <img
           src={heroImg}
           alt="Kennedy Equity real estate investment skyline"
