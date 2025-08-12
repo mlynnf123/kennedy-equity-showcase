@@ -26,7 +26,7 @@ export const Navbar = () => {
   return <header className="sticky top-0 z-40 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
       <nav className="container flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-ring rounded-md">
-          <span className="tracking-tight font-light text-xl">Kennedy Equity</span>
+          <span className="tracking-tight font-brand font-normal text-xl">Kennedy Equity</span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
           {navItems.map(item => <Link key={item.to} to={item.to} className={`text-sm transition-colors hover:text-foreground/80 ${pathname === item.to ? "text-foreground" : "text-foreground/70"}`}>

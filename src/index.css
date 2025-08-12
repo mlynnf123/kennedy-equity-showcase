@@ -112,3 +112,10 @@ All colors MUST be HSL.
     background-attachment: fixed;
   }
 }
+
+@layer utilities {
+  /* Brand font utility using Lora for a more prominent look */
+  .font-brand {
+    font-family: 'Lora', serif;
+  }
+}
