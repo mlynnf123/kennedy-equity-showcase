@@ -29,7 +29,8 @@ export const Hero = () => {
           className="w-full h-[360px] md:h-[520px] object-cover"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-background/40 via-background/20 to-transparent pointer-events-none" />
         <div className="absolute inset-0 flex items-end">
           <div className="container pb-8 md:pb-12">
             <div className="max-w-3xl">
