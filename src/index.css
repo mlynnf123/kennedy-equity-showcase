@@ -114,8 +114,8 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  /* Brand font utility using Lora for a more prominent look */
+  /* Brand font utility: modern, prominent sans */
   .font-brand {
-    font-family: 'Lora', serif;
+    font-family: 'Outfit', 'Montserrat', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
   }
 }
