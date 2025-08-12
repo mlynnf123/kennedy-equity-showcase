@@ -1,4 +1,4 @@
-import heroImg from "@/assets/hero-residential-alt-2.jpg";
+import heroImg from "@/assets/hero-modern-glass.jpg";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
@@ -25,7 +25,7 @@ export const Hero = () => {
       <div className="relative overflow-hidden rounded-none shadow-[var(--shadow-elevated)]">
         <img
           src={heroImg}
-          alt="Kennedy Equity contemporary residential apartments exterior"
+          alt="Kennedy Equity modern glass residential building against blue sky"
           className="w-full h-[360px] md:h-[520px] object-cover"
           loading="eager"
         />
