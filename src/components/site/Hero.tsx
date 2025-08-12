@@ -21,7 +21,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section ref={ref} className="relative mt-8">
+    <section ref={ref} className="relative">
       <div className="relative overflow-hidden rounded-none shadow-[var(--shadow-elevated)]">
         <img
           src={heroImg}
