@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Deploy</title>
+</head>
+<body>
+    <h1>Testing Kennedy Equity Deployment</h1>
+    <p>If you can see this, the basic HTML is working.</p>
+    
+    <h2>Checking Assets:</h2>
+    <div id="js-status">JavaScript: Not loaded</div>
+    <div id="css-status">CSS: Not loaded</div>
+    
+    <script>
+        // Test JavaScript loading
+        fetch('https://mlynnf123.github.io/kennedy-equity-showcase/assets/index-DzSiScu9.js')
+            .then(response => {
+                document.getElementById('js-status').textContent = 'JavaScript: ' + (response.ok ? 'Loaded successfully' : 'Failed to load');
+            })
+            .catch(err => {
+                document.getElementById('js-status').textContent = 'JavaScript: Error - ' + err.message;
+            });
+            
+        // Test CSS loading
+        fetch('https://mlynnf123.github.io/kennedy-equity-showcase/assets/index-BEWbySWx.css')
+            .then(response => {
+                document.getElementById('css-status').textContent = 'CSS: ' + (response.ok ? 'Loaded successfully' : 'Failed to load');
+            })
+            .catch(err => {
+                document.getElementById('css-status').textContent = 'CSS: Error - ' + err.message;
+            });
+            
+        // Check for console errors
+        window.addEventListener('error', function(e) {
+            const errorDiv = document.createElement('div');
+            errorDiv.style.color = 'red';
+            errorDiv.textContent = 'Error: ' + e.message + ' at ' + e.filename + ':' + e.lineno;
+            document.body.appendChild(errorDiv);
+        });
+    </script>
+</body>
+</html>
