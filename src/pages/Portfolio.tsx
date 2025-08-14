@@ -4,6 +4,13 @@ import SEO from "@/components/SEO";
 import PortfolioCard from "@/components/site/PortfolioCard";
 import residentialImg from "@/assets/portfolio-residential.jpg";
 import officeImg from "@/assets/portfolio-office.jpg";
+import flipHomesImg from "@/assets/portfolio-flip-homes.jpg";
+import buyHoldImg from "@/assets/portfolio-buy-hold.jpg";
+import coLivingImg from "@/assets/portfolio-co-living.jpg";
+import soberLivingImg from "@/assets/portfolio-sober-living.jpg";
+import remodeledImg from "@/assets/portfolio-remodeled.jpg";
+import tourHomesImg from "@/assets/portfolio-tour-homes.jpg";
+import customConstructionImg from "@/assets/portfolio-custom-construction.jpg";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -83,28 +90,28 @@ const Portfolio = () => {
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                    <PortfolioCard
-                     image={residentialImg}
+                     image={flipHomesImg}
                      name="Flip Homes"
                      description="Strategic property renovations and resales in high-demand areas."
                      location="Greater Austin and Surrounding Areas"
                      sector="Flip Homes"
                    />
                    <PortfolioCard
-                     image={residentialImg}
+                     image={buyHoldImg}
                      name="Buy and Hold"
                      description="Long-term rental properties generating consistent cash flow."
                      location="Greater Austin and Surrounding Areas"
                      sector="Buy and Hold"
                    />
                    <PortfolioCard
-                     image={residentialImg}
+                     image={coLivingImg}
                      name="Co-Living"
                      description="Modern co-living spaces for professionals and students."
                      location="Greater Austin and Surrounding Areas"
                      sector="Co-Living"
                    />
                    <PortfolioCard
-                     image={residentialImg}
+                     image={soberLivingImg}
                      name="Sober Living"
                      description="Supportive residential facilities for recovery communities."
                      location="Greater Austin and Surrounding Areas"
@@ -124,21 +131,21 @@ const Portfolio = () => {
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                    <PortfolioCard
-                     image={residentialImg}
+                     image={remodeledImg}
                      name="Remodelled Homes"
                      description="Complete home renovations transforming properties into modern living spaces."
                      location="Greater Austin and Surrounding Areas"
                      sector="Remodelled Homes"
                    />
                    <PortfolioCard
-                     image={residentialImg}
+                     image={tourHomesImg}
                      name="Tour Homes"
                      description="Showcase homes demonstrating our construction quality and design capabilities."
                      location="Greater Austin and Surrounding Areas"
                      sector="Tour Homes"
                    />
                    <PortfolioCard
-                     image={residentialImg}
+                     image={customConstructionImg}
                      name="New Custom Construction"
                      description="Custom homes tailored to client specifications with premium finishes."
                      location="Greater Austin and Surrounding Areas"
