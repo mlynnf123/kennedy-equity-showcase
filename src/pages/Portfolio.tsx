@@ -13,8 +13,19 @@ import tourHomesImg from "@/assets/portfolio-tour-homes.jpg";
 import modernBrickImg from "@/assets/portfolio-modern-brick.jpg";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Portfolio = () => {
+  const [searchParams] = useSearchParams();
+  const [activeTab, setActiveTab] = useState("pmi-austin");
+
+  useEffect(() => {
+    const tab = searchParams.get("tab");
+    if (tab && ["pmi-austin", "residential", "construction"].includes(tab)) {
+      setActiveTab(tab);
+    }
+  }, [searchParams]);
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
@@ -45,7 +56,7 @@ const Portfolio = () => {
             for operational value creation.
           </p>
 
-          <Tabs defaultValue="pmi-austin" className="mt-8">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-8">
             <TabsList className="grid w-full max-w-lg grid-cols-3">
               <TabsTrigger value="pmi-austin">PMI Austin</TabsTrigger>
               <TabsTrigger value="residential">Single & Multi Family</TabsTrigger>
