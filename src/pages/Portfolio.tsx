@@ -10,7 +10,7 @@ import coLivingImg from "@/assets/portfolio-co-living.jpg";
 import soberLivingImg from "@/assets/portfolio-sober-living.jpg";
 import remodeledImg from "@/assets/portfolio-remodeled.jpg";
 import tourHomesImg from "@/assets/portfolio-tour-homes.jpg";
-import customConstructionImg from "@/assets/portfolio-custom-construction.jpg";
+import modernBrickImg from "@/assets/portfolio-modern-brick.jpg";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -145,7 +145,7 @@ const Portfolio = () => {
                      sector="Tour Homes"
                    />
                    <PortfolioCard
-                     image={customConstructionImg}
+                     image={modernBrickImg}
                      name="New Custom Construction"
                      description="Custom homes tailored to client specifications with premium finishes."
                      location="Greater Austin and Surrounding Areas"
