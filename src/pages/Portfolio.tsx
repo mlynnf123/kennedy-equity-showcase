@@ -5,18 +5,28 @@ import PortfolioCard from "@/components/site/PortfolioCard";
 import residentialImg from "@/assets/portfolio-residential.jpg";
 import officeImg from "@/assets/portfolio-office.jpg";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Portfolio = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
         title="Portfolio | Kennedy Equity Investments"
-        description="Explore Kennedy Equity's portfolio across residential, commercial, and association asset classes."
+        description="Explore Kennedy Equity's diverse portfolio: PMI Austin property management, single-family and multi-family residential properties, and active construction projects across the Austin metro area."
         path="/portfolio"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
           name: "Kennedy Equity Portfolio",
+          description: "Real estate investment portfolio featuring PMI Austin property management services, residential properties, and construction developments",
+          mainEntity: [
+            {
+              "@type": "RealEstateAgent",
+              name: "PMI Austin",
+              url: "https://www.propertymanagementinc.com/offices/pmi-austin/",
+              areaServed: "Austin, TX"
+            }
+          ]
         }}
       />
       <Navbar />
@@ -28,58 +38,151 @@ const Portfolio = () => {
             for operational value creation.
           </p>
 
-          <div className="mt-8 grid gap-6">
-            <div className="relative p-6 rounded-lg border border-border bg-card">
-              <div className="md:flex items-start gap-6">
-                <img src={residentialImg} alt="PMI Austin property management services" className="rounded-md w-full md:w-1/2 object-cover" />
-                <div className="flex-1 mt-4 md:mt-0">
-                  <h2 className="text-2xl font-semibold">PMI Austin (Flagship)</h2>
-                  <p className="text-muted-foreground mt-2">
-                    Full-service real estate asset management covering residential, commercial, association, and realty
-                    services across the Austin metro area. Backed by franchise technology and multi-tier guarantees.
-                  </p>
-                  <ul className="mt-3 text-sm list-disc pl-5 text-muted-foreground space-y-1">
-                    <li>21-Day Lease Guarantee</li>
-                    <li>Eviction Protection</li>
-                    <li>On-Time Rent Promise</li>
-                    <li>Pet/Results/Leasing Guarantees</li>
-                  </ul>
-                  <a
-                    href="https://www.propertymanagementinc.com/offices/pmi-austin/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block mt-4"
-                  >
-                    <Button variant="cta">Visit PMI Austin</Button>
-                  </a>
+          <Tabs defaultValue="pmi-austin" className="mt-8">
+            <TabsList className="grid w-full max-w-lg grid-cols-3">
+              <TabsTrigger value="pmi-austin">PMI Austin</TabsTrigger>
+              <TabsTrigger value="residential">Single & Multi Family</TabsTrigger>
+              <TabsTrigger value="construction">Construction</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="pmi-austin" className="mt-6">
+              <div className="relative p-6 rounded-lg border border-border bg-card">
+                <div className="md:flex items-start gap-6">
+                  <img src={residentialImg} alt="PMI Austin property management services" className="rounded-md w-full md:w-1/2 object-cover" />
+                  <div className="flex-1 mt-4 md:mt-0">
+                    <h2 className="text-2xl font-semibold">PMI Austin</h2>
+                    <p className="text-muted-foreground mt-2">
+                      400 units under management, specializing in single family management across Greater Austin and surrounding areas. Founded in 2019.
+                    </p>
+                    <ul className="mt-3 text-sm list-disc pl-5 text-muted-foreground space-y-1">
+                      <li>400 units under management</li>
+                      <li>Specializing in single family management</li>
+                      <li>Greater Austin and surrounding areas</li>
+                      <li>Founded in 2019</li>
+                    </ul>
+                    <a
+                      href="https://www.pmiaustin.net"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-4"
+                    >
+                      <Button variant="cta">Visit PMI Austin</Button>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
+            </TabsContent>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              <PortfolioCard
-                image={officeImg}
-                name="Commerce Plaza"
-                description="Modern Class A office with stabilized tenancy and amenity upgrades."
-                location="Austin, TX"
-                sector="Commercial"
-              />
-              <PortfolioCard
-                image={residentialImg}
-                name="Greenview Townhomes"
-                description="Townhome community with value-add potential and professional management."
-                location="Round Rock, TX"
-                sector="Residential"
-              />
-              <PortfolioCard
-                image={officeImg}
-                name="Riverside Center"
-                description="Mixed-use asset with diversified income streams and strong foot traffic."
-                location="Cedar Park, TX"
-                sector="Mixed-Use"
-              />
-            </div>
-          </div>
+            <TabsContent value="residential" className="mt-6">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-semibold mb-4">Single Family and Multi Family Portfolio</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Our residential portfolio includes flip homes, buy and hold properties, co-living spaces, and sober living facilities across Greater Austin and surrounding areas.
+                  </p>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <PortfolioCard
+                    image={residentialImg}
+                    name="Flip Properties Portfolio"
+                    description="Active fix-and-flip projects with strategic renovations for quick market returns."
+                    location="Greater Austin Area"
+                    sector="Flip Homes"
+                  />
+                  <PortfolioCard
+                    image={residentialImg}
+                    name="Buy and Hold Portfolio"
+                    description="Long-term rental properties generating consistent cash flow and appreciation."
+                    location="Austin and Surrounding Areas"
+                    sector="Buy and Hold"
+                  />
+                  <PortfolioCard
+                    image={residentialImg}
+                    name="Co-Living Properties"
+                    description="Modern co-living spaces designed for young professionals and students."
+                    location="Central Austin"
+                    sector="Co-Living"
+                  />
+                  <PortfolioCard
+                    image={residentialImg}
+                    name="Sober Living Homes"
+                    description="Specialized residential facilities providing supportive sober living environments."
+                    location="Greater Austin Area"
+                    sector="Sober Living"
+                  />
+                  <PortfolioCard
+                    image={residentialImg}
+                    name="Single-Family Rentals"
+                    description="Portfolio of single-family homes in established neighborhoods with strong rental demand."
+                    location="Austin Metro Area"
+                    sector="Single Family"
+                  />
+                  <PortfolioCard
+                    image={residentialImg}
+                    name="Multi-Family Properties"
+                    description="Apartment complexes and townhomes offering diverse housing options."
+                    location="Greater Austin Region"
+                    sector="Multi-Family"
+                  />
+                </div>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="construction" className="mt-6">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-semibold mb-4">Construction</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Our construction division specializes in remodeled homes, tour homes, and new custom construction throughout Greater Austin and surrounding areas.
+                  </p>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <PortfolioCard
+                    image={residentialImg}
+                    name="Remodeled Homes Portfolio"
+                    description="Complete home renovations and modernizations, transforming dated properties into contemporary living spaces."
+                    location="Greater Austin Area"
+                    sector="Remodeled Homes"
+                  />
+                  <PortfolioCard
+                    image={residentialImg}
+                    name="Tour Homes Collection"
+                    description="Showcase homes designed to demonstrate our construction quality and design capabilities."
+                    location="Austin and Surrounding Areas"
+                    sector="Tour Homes"
+                  />
+                  <PortfolioCard
+                    image={residentialImg}
+                    name="Custom Home Construction"
+                    description="New custom homes tailored to client specifications with premium finishes and modern amenities."
+                    location="Greater Austin Region"
+                    sector="New Custom Construction"
+                  />
+                  <PortfolioCard
+                    image={residentialImg}
+                    name="Luxury Custom Estates"
+                    description="High-end custom home construction featuring unique architectural designs and luxury finishes."
+                    location="Lake Travis Area"
+                    sector="Custom Construction"
+                  />
+                  <PortfolioCard
+                    image={residentialImg}
+                    name="Modern Remodel Projects"
+                    description="Contemporary renovations focusing on open floor plans and sustainable materials."
+                    location="Central Austin"
+                    sector="Remodeled Homes"
+                  />
+                  <PortfolioCard
+                    image={residentialImg}
+                    name="Spec Home Development"
+                    description="Speculative home construction in prime locations with market-driven design choices."
+                    location="Austin Metro Area"
+                    sector="New Construction"
+                  />
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
         </section>
       </main>
       <Footer />

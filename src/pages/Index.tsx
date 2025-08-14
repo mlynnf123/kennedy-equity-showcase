@@ -46,43 +46,6 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="container mt-16">
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <h2 className="text-2xl font-bold">Featured: PMI Austin</h2>
-              <p className="text-muted-foreground mt-2 max-w-2xl">
-                PMI Austin is a full-service real estate asset management company offering residential, commercial,
-                association, and realty services across Austin and surrounding communities.
-              </p>
-            </div>
-            <Link to="/portfolio"><Button variant="cta">View Portfolio</Button></Link>
-          </div>
-          <div className="mt-6 grid md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 p-6 rounded-lg border border-border bg-card">
-              <h3 className="font-semibold">Why PMI Austin</h3>
-              <ul className="mt-3 text-sm list-disc pl-5 space-y-1 text-muted-foreground">
-                <li>21-Day Lease Guarantee</li>
-                <li>Eviction Protection</li>
-                <li>On-Time Rent Promise</li>
-                <li>Pet/Results/Leasing Guarantees</li>
-              </ul>
-              <a
-                href="https://www.propertymanagementinc.com/offices/pmi-austin/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-4"
-              >
-                <Button variant="outline">Visit PMI Austin</Button>
-              </a>
-            </div>
-            <div className="p-6 rounded-lg border border-border bg-card">
-              <h3 className="font-semibold">Scope</h3>
-              <p className="text-sm text-muted-foreground mt-2">
-                Residential, commercial, HOA, and realty sectors, backed by technology and award-winning service.
-              </p>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>

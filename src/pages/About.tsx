@@ -32,6 +32,25 @@ const About = () => {
             <li>Risk-aware, tax-efficient structures</li>
             <li>Operational excellence and community impact</li>
           </ul>
+          <h2 className="text-xl font-semibold mt-8">Daniel Kennedy, Founder</h2>
+          <p className="text-muted-foreground mt-2">
+            Real estate has been Daniel Kennedy's passion since his early years. After relocating to Austin in 2013, 
+            Daniel has built a comprehensive understanding of the local real estate market through hands-on experience 
+            across multiple sectors. From investment property acquisition to founding Avenue B Development, his custom 
+            home building firm, Daniel brings over a decade of diverse real estate expertise to Kennedy Equity.
+          </p>
+          <p className="text-muted-foreground mt-4">
+            As both a property owner and manager, Daniel understands firsthand the importance of professional, 
+            diligent property management. His personal portfolio of rental properties has provided valuable insights 
+            into maintaining assets that remain attractive to tenants while maximizing value for owners. This 
+            dual perspective drives Kennedy Equity's commitment to excellence in property management and investment.
+          </p>
+          <p className="text-muted-foreground mt-4">
+            Daniel remains actively engaged in Austin's real estate community as a member of NARPM (National 
+            Association of Residential Property Managers). When not focused on growing Kennedy Equity's portfolio, 
+            he enjoys Austin's outdoor lifestyle with his wife Renee, a licensed Texas Realtor, and their two 
+            daughters, Caila and Faith. The Kennedy family has proudly called Austin home for over a decade.
+          </p>
         </article>
       </main>
       <Footer />
