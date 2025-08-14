@@ -99,34 +99,44 @@ const Portfolio = () => {
                      Our residential portfolio includes flip homes, buy and hold properties, co-living, and sober living across Greater Austin and surrounding areas.
                    </p>
                 </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                    <PortfolioCard
                      image={flipHomesImg}
                      name="Flip Homes"
                      description="Strategic property renovations and resales in high-demand areas."
                      location="Greater Austin and Surrounding Areas"
-                     sector="Flip Homes"
+                     sector=""
                    />
                    <PortfolioCard
                      image={buyHoldImg}
                      name="Buy and Hold"
                      description="Long-term rental properties generating consistent cash flow."
                      location="Greater Austin and Surrounding Areas"
-                     sector="Buy and Hold"
+                     sector=""
                    />
                    <PortfolioCard
                      image={coLivingImg}
                      name="Co-Living"
                      description="Modern co-living spaces for professionals and students."
                      location="Greater Austin and Surrounding Areas"
-                     sector="Co-Living"
+                     sector=""
                    />
                    <PortfolioCard
                      image={soberLivingImg}
                      name="Sober Living"
                      description="Supportive residential facilities for recovery communities."
                      location="Greater Austin and Surrounding Areas"
-                     sector="Sober Living"
+                     sector=""
+                     action={
+                       <a
+                         href="https://lionsdensoberliving.com/"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         className="inline-block"
+                       >
+                         <Button variant="cta" size="sm">Visit</Button>
+                       </a>
+                     }
                    />
                 </div>
               </div>
@@ -140,27 +150,27 @@ const Portfolio = () => {
                      Our construction division specializes in remodelled homes, tour homes, and new custom construction throughout Greater Austin and surrounding areas.
                    </p>
                 </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                    <PortfolioCard
                      image={remodeledImg}
                      name="Remodelled Homes"
                      description="Complete home renovations transforming properties into modern living spaces."
                      location="Greater Austin and Surrounding Areas"
-                     sector="Remodelled Homes"
+                     sector=""
                    />
                    <PortfolioCard
                      image={tourHomesImg}
                      name="Tour Homes"
                      description="Showcase homes demonstrating our construction quality and design capabilities."
                      location="Greater Austin and Surrounding Areas"
-                     sector="Tour Homes"
+                     sector=""
                    />
                    <PortfolioCard
                      image={modernBrickImg}
                      name="New Custom Construction"
                      description="Custom homes tailored to client specifications with premium finishes."
                      location="Greater Austin and Surrounding Areas"
-                     sector="New Custom Construction"
+                     sector=""
                    />
                 </div>
               </div>
