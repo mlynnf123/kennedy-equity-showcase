@@ -51,17 +51,17 @@ const Portfolio = () => {
                   <img src={residentialImg} alt="PMI Austin property management services" className="rounded-md w-full md:w-1/2 object-cover" />
                   <div className="flex-1 mt-4 md:mt-0">
                     <h2 className="text-2xl font-semibold">PMI Austin</h2>
-                    <p className="text-muted-foreground mt-2">
-                      400 units under management, specializing in single family management across Greater Austin and surrounding areas. Founded in 2019.
-                    </p>
-                    <ul className="mt-3 text-sm list-disc pl-5 text-muted-foreground space-y-1">
-                      <li>400 units under management</li>
-                      <li>Specializing in single family management</li>
-                      <li>Greater Austin and surrounding areas</li>
-                      <li>Founded in 2019</li>
-                    </ul>
-                    <a
-                      href="https://www.pmiaustin.net"
+                     <p className="text-muted-foreground mt-2">
+                       400 units under management, specializing in single family management across Greater Austin and surrounding areas. Founded in 2019.
+                     </p>
+                     <ul className="mt-3 text-sm list-disc pl-5 text-muted-foreground space-y-1">
+                       <li>400 units under management</li>
+                       <li>Specializing in single family management</li>
+                       <li>Greater Austin and surrounding areas</li>
+                       <li>Founded in 2019</li>
+                     </ul>
+                     <a
+                       href="https://www.pmiaustin.net"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block mt-4"
@@ -76,54 +76,40 @@ const Portfolio = () => {
             <TabsContent value="residential" className="mt-6">
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold mb-4">Single Family and Multi Family Portfolio</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Our residential portfolio includes flip homes, buy and hold properties, co-living spaces, and sober living facilities across Greater Austin and surrounding areas.
-                  </p>
+                   <h3 className="text-xl font-semibold mb-4">Single Family and Multi Family Portfolio</h3>
+                   <p className="text-muted-foreground mb-6">
+                     Our residential portfolio includes flip homes, buy and hold properties, co-living, and sober living across Greater Austin and surrounding areas.
+                   </p>
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <PortfolioCard
-                    image={residentialImg}
-                    name="Flip Properties Portfolio"
-                    description="Active fix-and-flip projects with strategic renovations for quick market returns."
-                    location="Greater Austin Area"
-                    sector="Flip Homes"
-                  />
-                  <PortfolioCard
-                    image={residentialImg}
-                    name="Buy and Hold Portfolio"
-                    description="Long-term rental properties generating consistent cash flow and appreciation."
-                    location="Austin and Surrounding Areas"
-                    sector="Buy and Hold"
-                  />
-                  <PortfolioCard
-                    image={residentialImg}
-                    name="Co-Living Properties"
-                    description="Modern co-living spaces designed for young professionals and students."
-                    location="Central Austin"
-                    sector="Co-Living"
-                  />
-                  <PortfolioCard
-                    image={residentialImg}
-                    name="Sober Living Homes"
-                    description="Specialized residential facilities providing supportive sober living environments."
-                    location="Greater Austin Area"
-                    sector="Sober Living"
-                  />
-                  <PortfolioCard
-                    image={residentialImg}
-                    name="Single-Family Rentals"
-                    description="Portfolio of single-family homes in established neighborhoods with strong rental demand."
-                    location="Austin Metro Area"
-                    sector="Single Family"
-                  />
-                  <PortfolioCard
-                    image={residentialImg}
-                    name="Multi-Family Properties"
-                    description="Apartment complexes and townhomes offering diverse housing options."
-                    location="Greater Austin Region"
-                    sector="Multi-Family"
-                  />
+                   <PortfolioCard
+                     image={residentialImg}
+                     name="Flip Homes"
+                     description="Strategic property renovations and resales in high-demand areas."
+                     location="Greater Austin and Surrounding Areas"
+                     sector="Flip Homes"
+                   />
+                   <PortfolioCard
+                     image={residentialImg}
+                     name="Buy and Hold"
+                     description="Long-term rental properties generating consistent cash flow."
+                     location="Greater Austin and Surrounding Areas"
+                     sector="Buy and Hold"
+                   />
+                   <PortfolioCard
+                     image={residentialImg}
+                     name="Co-Living"
+                     description="Modern co-living spaces for professionals and students."
+                     location="Greater Austin and Surrounding Areas"
+                     sector="Co-Living"
+                   />
+                   <PortfolioCard
+                     image={residentialImg}
+                     name="Sober Living"
+                     description="Supportive residential facilities for recovery communities."
+                     location="Greater Austin and Surrounding Areas"
+                     sector="Sober Living"
+                   />
                 </div>
               </div>
             </TabsContent>
@@ -131,54 +117,33 @@ const Portfolio = () => {
             <TabsContent value="construction" className="mt-6">
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold mb-4">Construction</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Our construction division specializes in remodeled homes, tour homes, and new custom construction throughout Greater Austin and surrounding areas.
-                  </p>
+                   <h3 className="text-xl font-semibold mb-4">Construction</h3>
+                   <p className="text-muted-foreground mb-6">
+                     Our construction division specializes in remodelled homes, tour homes, and new custom construction throughout Greater Austin and surrounding areas.
+                   </p>
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <PortfolioCard
-                    image={residentialImg}
-                    name="Remodeled Homes Portfolio"
-                    description="Complete home renovations and modernizations, transforming dated properties into contemporary living spaces."
-                    location="Greater Austin Area"
-                    sector="Remodeled Homes"
-                  />
-                  <PortfolioCard
-                    image={residentialImg}
-                    name="Tour Homes Collection"
-                    description="Showcase homes designed to demonstrate our construction quality and design capabilities."
-                    location="Austin and Surrounding Areas"
-                    sector="Tour Homes"
-                  />
-                  <PortfolioCard
-                    image={residentialImg}
-                    name="Custom Home Construction"
-                    description="New custom homes tailored to client specifications with premium finishes and modern amenities."
-                    location="Greater Austin Region"
-                    sector="New Custom Construction"
-                  />
-                  <PortfolioCard
-                    image={residentialImg}
-                    name="Luxury Custom Estates"
-                    description="High-end custom home construction featuring unique architectural designs and luxury finishes."
-                    location="Lake Travis Area"
-                    sector="Custom Construction"
-                  />
-                  <PortfolioCard
-                    image={residentialImg}
-                    name="Modern Remodel Projects"
-                    description="Contemporary renovations focusing on open floor plans and sustainable materials."
-                    location="Central Austin"
-                    sector="Remodeled Homes"
-                  />
-                  <PortfolioCard
-                    image={residentialImg}
-                    name="Spec Home Development"
-                    description="Speculative home construction in prime locations with market-driven design choices."
-                    location="Austin Metro Area"
-                    sector="New Construction"
-                  />
+                   <PortfolioCard
+                     image={residentialImg}
+                     name="Remodelled Homes"
+                     description="Complete home renovations transforming properties into modern living spaces."
+                     location="Greater Austin and Surrounding Areas"
+                     sector="Remodelled Homes"
+                   />
+                   <PortfolioCard
+                     image={residentialImg}
+                     name="Tour Homes"
+                     description="Showcase homes demonstrating our construction quality and design capabilities."
+                     location="Greater Austin and Surrounding Areas"
+                     sector="Tour Homes"
+                   />
+                   <PortfolioCard
+                     image={residentialImg}
+                     name="New Custom Construction"
+                     description="Custom homes tailored to client specifications with premium finishes."
+                     location="Greater Austin and Surrounding Areas"
+                     sector="New Custom Construction"
+                   />
                 </div>
               </div>
             </TabsContent>
