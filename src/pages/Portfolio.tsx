@@ -57,10 +57,10 @@ const Portfolio = () => {
           </p>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-8">
-            <TabsList className="grid w-full max-w-lg grid-cols-3">
-              <TabsTrigger value="pmi-austin">PMI Austin</TabsTrigger>
-              <TabsTrigger value="residential">Single & Multi Family</TabsTrigger>
-              <TabsTrigger value="construction">Construction</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-0 sm:max-w-lg">
+              <TabsTrigger value="pmi-austin" className="text-xs sm:text-sm">PMI Austin</TabsTrigger>
+              <TabsTrigger value="residential" className="text-xs sm:text-sm">Single & Multi Family</TabsTrigger>
+              <TabsTrigger value="construction" className="text-xs sm:text-sm">Construction</TabsTrigger>
             </TabsList>
 
             <TabsContent value="pmi-austin" className="mt-6">
