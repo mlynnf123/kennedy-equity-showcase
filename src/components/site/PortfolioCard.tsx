@@ -18,7 +18,7 @@ export const PortfolioCard = ({ image, name, description, location, sector, acti
       <div className="p-4">
         <div className="flex items-center justify-between gap-2">
           <h3 className="text-lg font-semibold">{name}</h3>
-          <span className="text-xs px-2 py-1 rounded bg-secondary text-secondary-foreground">{sector}</span>
+          {sector && <span className="text-xs px-2 py-1 rounded bg-secondary text-secondary-foreground">{sector}</span>}
         </div>
         <p className="text-sm text-muted-foreground mt-2">{description}</p>
         <div className="mt-3 text-xs text-muted-foreground">{location}</div>
