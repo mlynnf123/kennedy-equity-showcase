@@ -51,19 +51,19 @@ const Index = () => {
           <h2 className="text-2xl font-bold text-center mb-8">Our Track Record</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center p-6 rounded-lg border border-border bg-card">
-              <div className="text-3xl font-bold text-primary">$25M+</div>
+              <div className="text-3xl text-primary">$25M+</div>
               <div className="text-sm text-muted-foreground mt-2">Investment Volume</div>
             </div>
             <div className="text-center p-6 rounded-lg border border-border bg-card">
-              <div className="text-3xl font-bold text-primary">400+</div>
+              <div className="text-3xl text-primary">400+</div>
               <div className="text-sm text-muted-foreground mt-2">Properties Managed</div>
             </div>
             <div className="text-center p-6 rounded-lg border border-border bg-card">
-              <div className="text-3xl font-bold text-primary">5+</div>
+              <div className="text-3xl text-primary">5+</div>
               <div className="text-sm text-muted-foreground mt-2">Years in Business</div>
             </div>
             <div className="text-center p-6 rounded-lg border border-border bg-card">
-              <div className="text-3xl font-bold text-primary">98%</div>
+              <div className="text-3xl text-primary">98%</div>
               <div className="text-sm text-muted-foreground mt-2">Client Satisfaction</div>
             </div>
           </div>
