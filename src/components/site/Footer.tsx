@@ -16,8 +16,6 @@ export const Footer = () => {
           <ul className="space-y-2 text-sm">
             <li><Link className="hover:underline" to="/about">About</Link></li>
             <li><Link className="hover:underline" to="/portfolio">Portfolio</Link></li>
-            <li><Link className="hover:underline" to="/approach">Approach</Link></li>
-            <li><Link className="hover:underline" to="/news">News & Insights</Link></li>
           </ul>
         </div>
         <div>
