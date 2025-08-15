@@ -10,12 +10,6 @@ const navItems = [{
   to: "/about",
   label: "About"
 }, {
-  to: "/approach",
-  label: "Approach"
-}, {
-  to: "/news",
-  label: "News"
-}, {
   to: "/contact",
   label: "Contact"
 }];
