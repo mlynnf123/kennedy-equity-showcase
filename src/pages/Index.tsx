@@ -6,7 +6,6 @@ import officeImg from "@/assets/portfolio-office.jpg";
 import residentialImg from "@/assets/portfolio-residential.jpg";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ClipboardList, BarChart3, Key, Building2 } from "lucide-react";
 
 const Index = () => {
   return (
@@ -43,61 +42,6 @@ const Index = () => {
           <div className="grid grid-cols-2 gap-4">
             <img src={officeImg} alt="Class A office building investment" className="rounded-lg object-cover w-full h-40 md:h-48" loading="lazy" />
             <img src={residentialImg} alt="Residential neighborhood managed properties" className="rounded-lg object-cover w-full h-40 md:h-48" loading="lazy" />
-            
-          </div>
-        </section>
-
-        {/* Investment Process Section */}
-        <section className="container mt-16">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold">Our Investment Process</h2>
-            <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
-              We follow a disciplined, proven approach to identify and acquire exceptional real estate opportunities
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="relative">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <ClipboardList className="w-8 h-8 text-primary" strokeWidth={1.5} />
-                </div>
-                <h3 className="font-semibold mb-2">Due Diligence</h3>
-                <p className="text-sm text-muted-foreground">Comprehensive market research and property evaluation</p>
-              </div>
-              <div className="hidden md:block absolute top-8 -right-4 w-8 h-0.5 bg-border"></div>
-            </div>
-            
-            <div className="relative">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <BarChart3 className="w-8 h-8 text-primary" strokeWidth={1.5} />
-                </div>
-                <h3 className="font-semibold mb-2">Financial Analysis</h3>
-                <p className="text-sm text-muted-foreground">Detailed financial modeling and risk assessment</p>
-              </div>
-              <div className="hidden md:block absolute top-8 -right-4 w-8 h-0.5 bg-border"></div>
-            </div>
-            
-            <div className="relative">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <Key className="w-8 h-8 text-primary" strokeWidth={1.5} />
-                </div>
-                <h3 className="font-semibold mb-2">Strategic Acquisition</h3>
-                <p className="text-sm text-muted-foreground">Negotiation and closing with optimal terms</p>
-              </div>
-              <div className="hidden md:block absolute top-8 -right-4 w-8 h-0.5 bg-border"></div>
-            </div>
-            
-            <div className="relative">
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <Building2 className="w-8 h-8 text-primary" strokeWidth={1.5} />
-                </div>
-                <h3 className="font-semibold mb-2">Active Management</h3>
-                <p className="text-sm text-muted-foreground">Ongoing optimization and value creation</p>
-              </div>
-            </div>
           </div>
         </section>
 
