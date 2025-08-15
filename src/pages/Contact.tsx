@@ -15,8 +15,8 @@ const Contact = () => {
   const [hp, setHp] = useState(""); // honeypot
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Formspree endpoint - you'll need to replace this with your actual form ID
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+  // Formspree endpoint
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/xdkdjwgd";
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
