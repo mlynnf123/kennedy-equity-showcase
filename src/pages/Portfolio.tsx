@@ -114,13 +114,23 @@ const Portfolio = () => {
                      location="Greater Austin and Surrounding Areas"
                      sector=""
                    />
-                   <PortfolioCard
-                     image={coLivingImg}
-                     name="Co-Living"
-                     description="Modern co-living spaces for professionals and students."
-                     location="Greater Austin and Surrounding Areas"
-                     sector=""
-                   />
+                    <PortfolioCard
+                      image={coLivingImg}
+                      name="Co-Living"
+                      description="Modern co-living spaces for professionals and students."
+                      location="Greater Austin and Surrounding Areas"
+                      sector=""
+                      action={
+                        <a
+                          href="https://assetst.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block"
+                        >
+                          <Button variant="cta" size="lg">Visit website</Button>
+                        </a>
+                      }
+                    />
                    <PortfolioCard
                      image={soberLivingImg}
                      name="Sober Living"
