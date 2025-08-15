@@ -46,6 +46,68 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Investment Process Section */}
+        <section className="container mt-16">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-bold">Our Investment Process</h2>
+            <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
+              We follow a disciplined, proven approach to identify and acquire exceptional real estate opportunities
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="relative">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                  <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold mb-2">Due Diligence</h3>
+                <p className="text-sm text-muted-foreground">Comprehensive market research and property evaluation</p>
+              </div>
+              <div className="hidden md:block absolute top-8 -right-4 w-8 h-0.5 bg-border"></div>
+            </div>
+            
+            <div className="relative">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                  <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold mb-2">Financial Analysis</h3>
+                <p className="text-sm text-muted-foreground">Detailed financial modeling and risk assessment</p>
+              </div>
+              <div className="hidden md:block absolute top-8 -right-4 w-8 h-0.5 bg-border"></div>
+            </div>
+            
+            <div className="relative">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                  <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold mb-2">Strategic Acquisition</h3>
+                <p className="text-sm text-muted-foreground">Negotiation and closing with optimal terms</p>
+              </div>
+              <div className="hidden md:block absolute top-8 -right-4 w-8 h-0.5 bg-border"></div>
+            </div>
+            
+            <div className="relative">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                  <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold mb-2">Active Management</h3>
+                <p className="text-sm text-muted-foreground">Ongoing optimization and value creation</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Key Statistics Section */}
         <section className="container mt-16">
           <h2 className="text-2xl font-bold text-center mb-8">Our Track Record</h2>
