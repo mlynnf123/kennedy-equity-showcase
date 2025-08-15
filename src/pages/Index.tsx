@@ -42,7 +42,7 @@ const Index = () => {
           <div className="grid grid-cols-2 gap-4">
             <img src={officeImg} alt="Class A office building investment" className="rounded-lg object-cover w-full h-40 md:h-48" loading="lazy" />
             <img src={residentialImg} alt="Residential neighborhood managed properties" className="rounded-lg object-cover w-full h-40 md:h-48" loading="lazy" />
-            <div className="col-span-2 text-sm text-muted-foreground">Representative portfolio imagery</div>
+            
           </div>
         </section>
 
