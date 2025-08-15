@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { ChevronUp } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 const navItems = [{
   to: "/",
@@ -42,7 +42,7 @@ export const Navbar = () => {
             <DropdownMenuTrigger asChild>
               <button className={`flex items-center gap-1 text-sm transition-colors hover:text-foreground/80 ${pathname === "/portfolio" ? "text-foreground" : "text-foreground/70"}`}>
                 Portfolio
-                <ChevronUp className={`h-3 w-3 transition-transform duration-200 ${portfolioOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${portfolioOpen ? 'rotate-180' : ''}`} />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56 bg-background border border-border shadow-lg z-50">
