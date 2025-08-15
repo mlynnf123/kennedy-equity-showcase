@@ -83,19 +83,19 @@ const Index = () => {
               </div>
             </div>
             <div className="space-y-4">
-              <div className="p-4 rounded-lg border border-border bg-card">
-                <h3 className="font-semibold">Austin Metro Core</h3>
+              <div className="p-4 rounded-lg border border-border bg-card transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-accent/50 cursor-pointer">
+                <h3 className="font-semibold">Austin Metro</h3>
                 <p className="text-sm text-muted-foreground mt-1">Downtown, East Austin, South Austin, West Austin</p>
               </div>
-              <div className="p-4 rounded-lg border border-border bg-card">
+              <div className="p-4 rounded-lg border border-border bg-card transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-accent/50 cursor-pointer">
                 <h3 className="font-semibold">North Austin & Suburbs</h3>
                 <p className="text-sm text-muted-foreground mt-1">Round Rock, Cedar Park, Leander, Georgetown</p>
               </div>
-              <div className="p-4 rounded-lg border border-border bg-card">
+              <div className="p-4 rounded-lg border border-border bg-card transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-accent/50 cursor-pointer">
                 <h3 className="font-semibold">South Austin & Suburbs</h3>
                 <p className="text-sm text-muted-foreground mt-1">Buda, Kyle, Dripping Springs, Bee Cave</p>
               </div>
-              <div className="p-4 rounded-lg border border-border bg-card">
+              <div className="p-4 rounded-lg border border-border bg-card transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-accent/50 cursor-pointer">
                 <h3 className="font-semibold">East Austin & Suburbs</h3>
                 <p className="text-sm text-muted-foreground mt-1">Pflugerville, Manor, Elgin, Bastrop</p>
               </div>
