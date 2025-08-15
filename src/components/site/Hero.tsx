@@ -26,7 +26,7 @@ export const Hero = () => {
         <img
           src={heroImg}
           alt="Kennedy Equity modern glass residential building against blue sky"
-          className="w-full h-[360px] md:h-[520px] object-cover"
+          className="w-full h-[480px] md:h-[720px] object-cover"
           loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent pointer-events-none" />
