@@ -1,7 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ChevronDown, Menu } from "lucide-react";
 import { useState } from "react";
 const navItems = [{
   to: "/",
@@ -27,6 +28,7 @@ const portfolioItems = [{
 export const Navbar = () => {
   const { pathname } = useLocation();
   const [portfolioOpen, setPortfolioOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   return <header className="sticky top-0 z-40 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
       <nav className="container flex items-center justify-between h-16">
@@ -57,9 +59,53 @@ export const Navbar = () => {
           </DropdownMenu>
         </div>
         <div className="flex items-center gap-3">
-          <Link to="/contact">
+          <Link to="/contact" className="hidden md:block">
             <Button variant="cta" size="sm" className="font-light">Work With Us</Button>
           </Link>
+          
+          {/* Mobile Menu */}
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="sm" className="md:hidden">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px]">
+              <nav className="flex flex-col gap-6 mt-8">
+                {navItems.map(item => (
+                  <Link 
+                    key={item.to} 
+                    to={item.to} 
+                    className={`text-lg transition-colors hover:text-foreground/80 ${pathname === item.to ? "text-foreground font-medium" : "text-foreground/70"}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                
+                <div className="flex flex-col gap-3">
+                  <span className="text-lg font-medium text-foreground">Portfolio</span>
+                  <div className="flex flex-col gap-3 ml-4">
+                    {portfolioItems.map(item => (
+                      <Link 
+                        key={item.to} 
+                        to={item.to} 
+                        className="text-base text-foreground/70 hover:text-foreground/80 transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                
+                <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="cta" size="lg" className="w-full font-light">Work With Us</Button>
+                </Link>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </nav>
     </header>;
