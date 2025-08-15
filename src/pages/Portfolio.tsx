@@ -134,7 +134,7 @@ const Portfolio = () => {
                          rel="noopener noreferrer"
                          className="inline-block"
                        >
-                         <Button variant="cta" size="sm">Visit</Button>
+                         <Button variant="cta" size="lg">Visit website</Button>
                        </a>
                      }
                    />
