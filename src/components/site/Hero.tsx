@@ -34,7 +34,7 @@ export const Hero = () => {
         <div className="absolute inset-0 flex items-end">
           <div className="container pb-8 md:pb-12">
             <div className="max-w-3xl">
-              <h1 className="text-3xl md:text-5xl font-bold leading-tight">
+              <h1 className="text-3xl md:text-5xl font-normal leading-tight">
                 Strategic Real Estate Investments. Sustainable Growth. Trusted Management.
               </h1>
               <p className="text-base md:text-lg text-muted-foreground mt-4">
