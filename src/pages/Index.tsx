@@ -29,7 +29,7 @@ const Index = () => {
 
         <section className="container mt-12 grid gap-10 md:grid-cols-2 items-center">
           <div>
-            <h2 className="text-2xl font-semibold">What We Do</h2>
+            <h2 className="text-2xl font-normal">What We Do</h2>
             <p className="text-muted-foreground mt-3">
               We invest in and manage a diverse portfolio spanning residential, commercial, and association
               properties. Our disciplined approach focuses on long-term value creation, prudent risk management,
@@ -47,7 +47,7 @@ const Index = () => {
 
         {/* Key Statistics Section */}
         <section className="container mt-16">
-          <h2 className="text-2xl font-semibold text-center mb-8">Our Track Record</h2>
+          <h2 className="text-2xl font-normal text-center mb-8">Our Track Record</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center p-6 rounded-lg border border-border bg-card">
               <div className="text-3xl text-primary">$25M+</div>
@@ -72,7 +72,7 @@ const Index = () => {
         <section className="container mt-16">
           <div className="grid gap-10 md:grid-cols-2 items-center">
             <div>
-              <h2 className="text-2xl font-semibold">Service Areas</h2>
+              <h2 className="text-2xl font-normal">Service Areas</h2>
               <p className="text-muted-foreground mt-3">
                 We focus on high-growth markets in the Greater Austin metropolitan area, 
                 leveraging our deep local knowledge and established relationships.
