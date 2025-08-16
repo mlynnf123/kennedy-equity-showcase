@@ -29,7 +29,7 @@ const Index = () => {
 
         <section className="container mt-12 grid gap-10 md:grid-cols-2 items-center">
           <div>
-            <h2 className="text-2xl font-bold">What We Do</h2>
+            <h2 className="text-2xl font-semibold">What We Do</h2>
             <p className="text-muted-foreground mt-3">
               We invest in and manage a diverse portfolio spanning residential, commercial, and association
               properties. Our disciplined approach focuses on long-term value creation, prudent risk management,
@@ -47,7 +47,7 @@ const Index = () => {
 
         {/* Key Statistics Section */}
         <section className="container mt-16">
-          <h2 className="text-2xl font-bold text-center mb-8">Our Track Record</h2>
+          <h2 className="text-2xl font-semibold text-center mb-8">Our Track Record</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center p-6 rounded-lg border border-border bg-card">
               <div className="text-3xl text-primary">$25M+</div>
@@ -72,7 +72,7 @@ const Index = () => {
         <section className="container mt-16">
           <div className="grid gap-10 md:grid-cols-2 items-center">
             <div>
-              <h2 className="text-2xl font-bold">Service Areas</h2>
+              <h2 className="text-2xl font-semibold">Service Areas</h2>
               <p className="text-muted-foreground mt-3">
                 We focus on high-growth markets in the Greater Austin metropolitan area, 
                 leveraging our deep local knowledge and established relationships.
@@ -83,19 +83,19 @@ const Index = () => {
             </div>
             <div className="space-y-4">
               <div className="p-4 rounded-lg border border-border bg-card transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-accent/50 cursor-pointer">
-                <h3 className="font-semibold">Austin Metro</h3>
+                <h3 className="font-medium">Austin Metro</h3>
                 <p className="text-sm text-muted-foreground mt-1">Downtown, East Austin, South Austin, West Austin</p>
               </div>
               <div className="p-4 rounded-lg border border-border bg-card transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-accent/50 cursor-pointer">
-                <h3 className="font-semibold">North Austin & Suburbs</h3>
+                <h3 className="font-medium">North Austin & Suburbs</h3>
                 <p className="text-sm text-muted-foreground mt-1">Round Rock, Cedar Park, Leander, Georgetown</p>
               </div>
               <div className="p-4 rounded-lg border border-border bg-card transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-accent/50 cursor-pointer">
-                <h3 className="font-semibold">South Austin & Suburbs</h3>
+                <h3 className="font-medium">South Austin & Suburbs</h3>
                 <p className="text-sm text-muted-foreground mt-1">Buda, Kyle, Dripping Springs, Bee Cave</p>
               </div>
               <div className="p-4 rounded-lg border border-border bg-card transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-accent/50 cursor-pointer">
-                <h3 className="font-semibold">East Austin & Suburbs</h3>
+                <h3 className="font-medium">East Austin & Suburbs</h3>
                 <p className="text-sm text-muted-foreground mt-1">Pflugerville, Manor, Elgin, Bastrop</p>
               </div>
             </div>
