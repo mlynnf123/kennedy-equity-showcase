@@ -50,7 +50,7 @@ const Portfolio = () => {
       <Navbar />
       <main className="flex-1">
         <section className="container mt-10">
-          <h1 className="text-3xl font-bold">Portfolio</h1>
+          <h1 className="text-3xl font-normal">Portfolio</h1>
           <p className="text-muted-foreground mt-3 max-w-2xl">
             A selection of current investments. We prioritize markets with strong fundamentals and opportunities
             for operational value creation.

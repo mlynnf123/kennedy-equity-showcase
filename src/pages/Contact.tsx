@@ -79,7 +79,7 @@ const Contact = () => {
       />
       <Navbar />
       <main className="container flex-1 py-10">
-        <h1 className="text-3xl font-bold">Contact</h1>
+        <h1 className="text-3xl font-normal">Contact</h1>
         <p className="text-muted-foreground mt-2 max-w-2xl">
           For investment opportunities, partnerships, or general inquiries, please reach out using the form below.
         </p>

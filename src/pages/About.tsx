@@ -13,7 +13,7 @@ const About = () => {
       <Navbar />
       <main className="container flex-1 py-10">
         <article className="max-w-3xl">
-          <h1 className="text-3xl font-bold">About Us</h1>
+          <h1 className="text-3xl font-normal">About Us</h1>
           <p className="text-muted-foreground mt-4">
             With a commitment to long-term value and measured growth, Kennedy Equity is a privately held real
             estate holding company dedicated to acquiring, developing, and managing exceptional properties across
