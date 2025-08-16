@@ -1,8 +1,70 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { DOMParser } from "https://deno.land/x/deno_dom@v0.1.38/deno-dom-wasm.ts"
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
+
+// Function to scrape PMI Austin listings
+async function scrapePMIListings(url: string, type: 'rent' | 'sale') {
+  try {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    
+    const html = await response.text()
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    
+    if (!doc) {
+      throw new Error("Failed to parse HTML")
+    }
+
+    const listings = []
+    const propertyCards = doc.querySelectorAll('.property-item, .listing-item, .property-card, [class*="property"], [class*="listing"]')
+    
+    for (let i = 0; i < Math.min(propertyCards.length, 10); i++) {
+      const card = propertyCards[i]
+      
+      const title = card.querySelector('h3, h4, .title, .property-title, .listing-title')?.textContent?.trim() || 'Property Available'
+      const price = card.querySelector('.price, .rent, .cost, [class*="price"]')?.textContent?.trim() || 'Contact for Price'
+      const address = card.querySelector('.address, .location, [class*="address"]')?.textContent?.trim() || ''
+      const beds = card.querySelector('.beds, .bedrooms, [class*="bed"]')?.textContent?.trim() || ''
+      const baths = card.querySelector('.baths, .bathrooms, [class*="bath"]')?.textContent?.trim() || ''
+      const link = card.querySelector('a')?.getAttribute('href') || ''
+      const image = card.querySelector('img')?.getAttribute('src') || ''
+      
+      if (title || price || address) {
+        listings.push({
+          title: title || address,
+          price,
+          address,
+          beds,
+          baths,
+          link: link.startsWith('http') ? link : `https://www.pmiaustin.net${link}`,
+          image: image.startsWith('http') ? image : image ? `https://www.pmiaustin.net${image}` : '',
+          type
+        })
+      }
+    }
+    
+    return {
+      success: true,
+      listings,
+      lastChecked: new Date().toISOString(),
+      source: url
+    }
+  } catch (error) {
+    console.error(`Error scraping ${type} listings:`, error)
+    return {
+      success: false,
+      error: error.message,
+      listings: [],
+      lastChecked: new Date().toISOString(),
+      source: url
+    }
+  }
 }
 
 serve(async (req) => {
@@ -17,6 +79,27 @@ serve(async (req) => {
     const openaiApiKey = Deno.env.get('OPENAI_API_KEY')
     if (!openaiApiKey) {
       throw new Error('OpenAI API key not found')
+    }
+
+    // Check if user is asking for listings
+    const isListingsRequest = message.toLowerCase().includes('/listings') || 
+                             message.toLowerCase().includes('listings') ||
+                             message.toLowerCase().includes('properties for rent') ||
+                             message.toLowerCase().includes('properties for sale') ||
+                             message.toLowerCase().includes('homes for rent') ||
+                             message.toLowerCase().includes('homes for sale')
+
+    let listingsData = null
+    if (isListingsRequest) {
+      console.log('Fetching PMI Austin listings...')
+      
+      const rentListings = await scrapePMIListings('https://www.pmiaustin.net/austin-homes-for-rent', 'rent')
+      const saleListings = await scrapePMIListings('https://www.pmiaustin.net/austin-homes-for-sale', 'sale')
+      
+      listingsData = {
+        rent: rentListings,
+        sale: saleListings
+      }
     }
 
     // System prompt for Kennedy Equity Assistant
@@ -67,10 +150,15 @@ Key Information (use for company answers):
 When unsure, politely clarify and redirect to the company's contact form or email.`
 
     // Prepare messages for OpenAI
+    let userMessage = message
+    if (listingsData) {
+      userMessage += `\n\nCurrent PMI Austin Listings Data:\n${JSON.stringify(listingsData, null, 2)}`
+    }
+
     const messages = [
       { role: "system", content: systemPrompt },
       ...history,
-      { role: "user", content: message }
+      { role: "user", content: userMessage }
     ]
 
     // Call OpenAI API
