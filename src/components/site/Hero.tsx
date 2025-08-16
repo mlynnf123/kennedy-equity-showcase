@@ -32,7 +32,7 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-background/40 via-background/20 to-transparent pointer-events-none" />
         <div className="absolute inset-0 flex items-end">
-          <div className="container pb-16 md:pb-20">
+          <div className="container pb-24 md:pb-32">
             <div className="max-w-3xl">
               <h1 className="text-3xl md:text-5xl font-normal leading-tight">
                 Strategic Real Estate Investments. Sustainable Growth. Trusted Management.
