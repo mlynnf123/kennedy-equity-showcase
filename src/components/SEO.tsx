@@ -10,7 +10,10 @@ interface SEOProps {
 
 export const SEO = ({ title, description, path, image, structuredData }: SEOProps) => {
   const origin = typeof window !== "undefined" ? window.location.origin : "";
-  const canonical = origin + (path ?? (typeof window !== "undefined" ? window.location.pathname : "/"));
+  const base = (import.meta as any).env?.BASE_URL || "/"; // includes trailing slash in Vite
+  const normalize = (p: string) => (p.startsWith("/") ? p : `/${p}`);
+  const baseNormalized = base.endsWith("/") ? base.slice(0, -1) : base;
+  const canonical = origin + (path ? `${baseNormalized}${normalize(path)}` : (typeof window !== "undefined" ? window.location.pathname : "/"));
 
   const metaTitle = title.length > 60 ? title.slice(0, 57) + "..." : title;
   const metaDescription = description?.slice(0, 160) || "Kennedy Equity is a real estate holding company focused on strategic investments, value creation, and trusted property management.";
