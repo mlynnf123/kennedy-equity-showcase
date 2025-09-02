@@ -108,7 +108,7 @@ const Portfolio = () => {
                      sector=""
                      action={
                        <Link
-                         to="/gallery"
+                         to={`${import.meta.env.BASE_URL}gallery`}
                          className="inline-block"
                        >
                          <Button variant="cta" size="lg">View Gallery</Button>
