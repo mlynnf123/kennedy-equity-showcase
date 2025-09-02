@@ -9,6 +9,11 @@ import rosedaleKitchenAfter2 from "@/assets/gallery-rosedale-kitchen-after-2.jpg
 import rosedaleLivingAfter from "@/assets/gallery-rosedale-living-after.jpg";
 import rosedaleExteriorAfter1 from "@/assets/gallery-rosedale-exterior-after-1.jpg";
 import rosedaleExteriorAfter2 from "@/assets/gallery-rosedale-exterior-after-2.jpg";
+import yauponKitchenBefore1 from "@/assets/gallery-yaupon-kitchen-before-1.jpg";
+import yauponLivingBefore from "@/assets/gallery-yaupon-living-before.jpg";
+import yauponExteriorBefore from "@/assets/gallery-yaupon-exterior-before.jpg";
+import yauponOfficeBefore from "@/assets/gallery-yaupon-office-before.jpg";
+import yauponKitchenBefore2 from "@/assets/gallery-yaupon-kitchen-before-2.jpg";
 
 const Gallery = () => {
   return (
@@ -142,6 +147,95 @@ const Gallery = () => {
                           Renovated living space with updated flooring and staircase
                         </p>
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Project 2: 1900 Yaupon Valley Rd */}
+            <div className="mb-16">
+              <div className="mb-8">
+                <h2 className="text-2xl font-normal mb-2">1900 Yaupon Valley Rd</h2>
+                <p className="text-muted-foreground">West Lake Hills, TX 78746</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Comprehensive renovation of this West Lake Hills home featuring modern updates 
+                  while preserving the natural beauty of the hill country setting.
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Before Photos */}
+                <div>
+                  <h3 className="text-lg font-medium mb-4 text-center">Before</h3>
+                  <div className="space-y-6">
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={yauponExteriorBefore} 
+                        alt="1900 Yaupon Valley Rd exterior before renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Exterior</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Original exterior with mature landscaping and established trees
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={yauponKitchenBefore1} 
+                        alt="1900 Yaupon Valley Rd kitchen before renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Kitchen</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Original kitchen with bay window and existing cabinetry
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={yauponLivingBefore} 
+                        alt="1900 Yaupon Valley Rd living room before renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Living Room</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Spacious living area with vaulted ceilings and exposed beams
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={yauponOfficeBefore} 
+                        alt="1900 Yaupon Valley Rd office before renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Office/Study</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Home office space with natural lighting and wood trim
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* After Photos - Coming Soon */}
+                <div>
+                  <h3 className="text-lg font-medium mb-4 text-center">After</h3>
+                  <div className="flex items-center justify-center h-full bg-muted/20 rounded-lg border-2 border-dashed border-muted">
+                    <div className="text-center py-16">
+                      <h4 className="text-lg font-medium mb-2">After Photos Coming Soon</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Renovation in progress. After photos will be added upon completion.
+                      </p>
                     </div>
                   </div>
                 </div>
