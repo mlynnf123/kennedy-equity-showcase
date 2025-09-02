@@ -4,6 +4,11 @@ import SEO from "@/components/SEO";
 import rosedaleExteriorBefore from "@/assets/gallery-rosedale-exterior-before.jpg";
 import rosedalePorchBefore from "@/assets/gallery-rosedale-porch-before.jpg";
 import rosedaleBathroomBefore from "@/assets/gallery-rosedale-bathroom-before.jpg";
+import rosedaleKitchenAfter1 from "@/assets/gallery-rosedale-kitchen-after-1.jpg";
+import rosedaleKitchenAfter2 from "@/assets/gallery-rosedale-kitchen-after-2.jpg";
+import rosedaleLivingAfter from "@/assets/gallery-rosedale-living-after.jpg";
+import rosedaleExteriorAfter1 from "@/assets/gallery-rosedale-exterior-after-1.jpg";
+import rosedaleExteriorAfter2 from "@/assets/gallery-rosedale-exterior-after-2.jpg";
 
 const Gallery = () => {
   return (
@@ -93,15 +98,50 @@ const Gallery = () => {
                   </div>
                 </div>
                 
-                {/* After Photos - Coming Soon */}
+                {/* After Photos */}
                 <div>
                   <h3 className="text-lg font-medium mb-4 text-center">After</h3>
-                  <div className="flex items-center justify-center h-full bg-muted/20 rounded-lg border-2 border-dashed border-muted">
-                    <div className="text-center py-16">
-                      <h4 className="text-lg font-medium mb-2">After Photos Coming Soon</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Renovation in progress. After photos will be added upon completion.
-                      </p>
+                  <div className="space-y-6">
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={rosedaleExteriorAfter1} 
+                        alt="4506 Rosedale Ave exterior after renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Front Exterior</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Beautiful renovation with updated siding, porch, and professional landscaping
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={rosedaleKitchenAfter1} 
+                        alt="4506 Rosedale Ave kitchen after renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Modern Kitchen</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Complete kitchen renovation with marble countertops and premium appliances
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={rosedaleLivingAfter} 
+                        alt="4506 Rosedale Ave living area after renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Living Area</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Renovated living space with updated flooring and staircase
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
