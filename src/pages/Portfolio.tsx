@@ -13,7 +13,7 @@ import tourHomesImg from "@/assets/portfolio-tour-homes.jpg";
 import modernBrickImg from "@/assets/portfolio-modern-brick.jpg";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Portfolio = () => {
@@ -107,12 +107,12 @@ const Portfolio = () => {
                      location="Greater Austin and Surrounding Areas"
                      sector=""
                      action={
-                       <a
-                         href="/gallery"
+                       <Link
+                         to="/gallery"
                          className="inline-block"
                        >
                          <Button variant="cta" size="lg">View Gallery</Button>
-                       </a>
+                       </Link>
                      }
                    />
                    <PortfolioCard
