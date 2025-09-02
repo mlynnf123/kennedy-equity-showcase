@@ -14,6 +14,9 @@ import yauponLivingBefore from "@/assets/gallery-yaupon-living-before.jpg";
 import yauponExteriorBefore from "@/assets/gallery-yaupon-exterior-before.jpg";
 import yauponOfficeBefore from "@/assets/gallery-yaupon-office-before.jpg";
 import yauponKitchenBefore2 from "@/assets/gallery-yaupon-kitchen-before-2.jpg";
+import yauponKitchenAfter1 from "@/assets/gallery-yaupon-kitchen-after-1.jpg";
+import yauponKitchenAfter2 from "@/assets/gallery-yaupon-kitchen-after-2.jpg";
+import yauponLivingAfter from "@/assets/gallery-yaupon-living-after.jpg";
 
 const Gallery = () => {
   return (
@@ -227,15 +230,50 @@ const Gallery = () => {
                   </div>
                 </div>
                 
-                {/* After Photos - Coming Soon */}
+                {/* After Photos */}
                 <div>
                   <h3 className="text-lg font-medium mb-4 text-center">After</h3>
-                  <div className="flex items-center justify-center h-full bg-muted/20 rounded-lg border-2 border-dashed border-muted">
-                    <div className="text-center py-16">
-                      <h4 className="text-lg font-medium mb-2">After Photos Coming Soon</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Renovation in progress. After photos will be added upon completion.
-                      </p>
+                  <div className="space-y-6">
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={yauponKitchenAfter1} 
+                        alt="1900 Yaupon Valley Rd kitchen after renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Modern Kitchen</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Stunning kitchen renovation with marble countertops, white subway tile, and floating shelves
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={yauponKitchenAfter2} 
+                        alt="1900 Yaupon Valley Rd kitchen island after renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Kitchen Island</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Beautiful kitchen island with marble countertops and modern lighting
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={yauponLivingAfter} 
+                        alt="1900 Yaupon Valley Rd living room after renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Living Room</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Transformed living space with exposed white beams and modern furnishings
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
