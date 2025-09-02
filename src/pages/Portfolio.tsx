@@ -106,6 +106,14 @@ const Portfolio = () => {
                      description="Strategic property renovations and resales in high-demand areas."
                      location="Greater Austin and Surrounding Areas"
                      sector=""
+                     action={
+                       <a
+                         href="/gallery"
+                         className="inline-block"
+                       >
+                         <Button variant="cta" size="lg">View Gallery</Button>
+                       </a>
+                     }
                    />
                    <PortfolioCard
                      image={buyHoldImg}
