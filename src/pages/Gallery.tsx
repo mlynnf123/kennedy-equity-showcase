@@ -17,6 +17,10 @@ import yauponKitchenBefore2 from "@/assets/gallery-yaupon-kitchen-before-2.jpg";
 import yauponKitchenAfter1 from "@/assets/gallery-yaupon-kitchen-after-1.jpg";
 import yauponKitchenAfter2 from "@/assets/gallery-yaupon-kitchen-after-2.jpg";
 import yauponLivingAfter from "@/assets/gallery-yaupon-living-after.jpg";
+import cupidExteriorBefore from "@/assets/gallery-cupid-exterior-before.jpg";
+import cupidKitchenBefore from "@/assets/gallery-cupid-kitchen-before.jpg";
+import cupidLivingBefore from "@/assets/gallery-cupid-living-before.jpg";
+import cupidBedroomBefore from "@/assets/gallery-cupid-bedroom-before.jpg";
 
 const Gallery = () => {
   return (
@@ -274,6 +278,95 @@ const Gallery = () => {
                           Transformed living space with exposed white beams and modern furnishings
                         </p>
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Project 3: 3210 Cupid Dr */}
+            <div className="mb-16">
+              <div className="mb-8">
+                <h2 className="text-2xl font-normal mb-2">3210 Cupid Dr</h2>
+                <p className="text-muted-foreground">Austin, TX 78735</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Strategic renovation of this South Austin brick home featuring updated interior spaces 
+                  and enhanced functionality while maintaining its classic charm.
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Before Photos */}
+                <div>
+                  <h3 className="text-lg font-medium mb-4 text-center">Before</h3>
+                  <div className="space-y-6">
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={cupidExteriorBefore} 
+                        alt="3210 Cupid Dr exterior before renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Front Exterior</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Original brick exterior with mature oak tree and established landscaping
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={cupidKitchenBefore} 
+                        alt="3210 Cupid Dr kitchen before renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Kitchen</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Original kitchen with white cabinets and tile flooring
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={cupidLivingBefore} 
+                        alt="3210 Cupid Dr living area before renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Living & Dining Area</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Open living space with hardwood floors and view to kitchen
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={cupidBedroomBefore} 
+                        alt="3210 Cupid Dr bedroom before renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Bedroom</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Spacious bedroom with hardwood floors and built-in closets
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* After Photos - Coming Soon */}
+                <div>
+                  <h3 className="text-lg font-medium mb-4 text-center">After</h3>
+                  <div className="flex items-center justify-center h-full bg-muted/20 rounded-lg border-2 border-dashed border-muted">
+                    <div className="text-center py-16">
+                      <h4 className="text-lg font-medium mb-2">After Photos Coming Soon</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Renovation in progress. After photos will be added upon completion.
+                      </p>
                     </div>
                   </div>
                 </div>
