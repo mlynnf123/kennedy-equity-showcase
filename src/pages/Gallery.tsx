@@ -4,6 +4,8 @@ import SEO from "@/components/SEO";
 import rosedaleExteriorBefore from "@/assets/gallery-rosedale-exterior-before.jpg";
 import rosedalePorchBefore from "@/assets/gallery-rosedale-porch-before.jpg";
 import rosedaleBathroomBefore from "@/assets/gallery-rosedale-bathroom-before.jpg";
+import rosedaleKitchenBefore from "@/assets/gallery-rosedale-kitchen-before.jpg";
+import rosedaleLivingBefore from "@/assets/gallery-rosedale-living-before.jpg";
 import rosedaleKitchenAfter1 from "@/assets/gallery-rosedale-kitchen-after-1.jpg";
 import rosedaleKitchenAfter2 from "@/assets/gallery-rosedale-kitchen-after-2.jpg";
 import rosedaleLivingAfter from "@/assets/gallery-rosedale-living-after.jpg";
@@ -219,6 +221,34 @@ const Gallery = () => {
                         <h4 className="font-medium text-sm">Front Exterior</h4>
                         <p className="text-xs text-muted-foreground mt-1">
                           Original siding and landscaping before renovation
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={rosedaleKitchenBefore} 
+                        alt="4506 Rosedale Ave kitchen before renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Kitchen</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Original kitchen with white cabinets and black appliances
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={rosedaleLivingBefore} 
+                        alt="4506 Rosedale Ave living room before renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Living Room</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Original living space with hardwood floors and fireplace
                         </p>
                       </div>
                     </div>
