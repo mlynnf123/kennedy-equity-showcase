@@ -13,7 +13,7 @@ import yauponKitchenBefore1 from "@/assets/gallery-yaupon-kitchen-before-1.jpg";
 import yauponLivingBefore from "@/assets/gallery-yaupon-living-before.jpg";
 import yauponExteriorBefore from "@/assets/gallery-yaupon-exterior-before.jpg";
 import yauponOfficeBefore from "@/assets/gallery-yaupon-office-before.jpg";
-import yauponKitchenBefore2 from "@/assets/gallery-yaupon-kitchen-before-2.jpg";
+import yauponBathroomBefore from "@/assets/gallery-yaupon-bathroom-before.jpg";
 import yauponKitchenAfter1 from "@/assets/gallery-yaupon-kitchen-after-1.jpg";
 import yauponKitchenAfter2 from "@/assets/gallery-yaupon-kitchen-after-2.jpg";
 import yauponLivingAfter from "@/assets/gallery-yaupon-living-after.jpg";
@@ -371,6 +371,20 @@ const Gallery = () => {
                         <h4 className="font-medium text-sm">Office/Study</h4>
                         <p className="text-xs text-muted-foreground mt-1">
                           Home office space with natural lighting and wood trim
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-card rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={yauponBathroomBefore} 
+                        alt="1900 Yaupon Valley Rd bathroom before renovation"
+                        className="w-full h-64 object-cover"
+                      />
+                      <div className="p-4">
+                        <h4 className="font-medium text-sm">Bathroom</h4>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Original bathroom with classic tile and fixtures
                         </p>
                       </div>
                     </div>
