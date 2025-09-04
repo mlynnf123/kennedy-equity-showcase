@@ -91,18 +91,63 @@ const Gallery = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="Flip Homes Gallery | Kennedy Equity Investments"
-        description="Browse our before and after photos showcasing strategic property renovations and transformations across Greater Austin and surrounding areas."
+        title="Property Transformation Gallery | Kennedy Equity Real Estate"
+        description="View stunning before and after photos of our Austin area property renovations. See complete transformations of homes in Austin, West Lake Hills, and surrounding areas with professional interior design and modern upgrades."
         path="/gallery"
+        image={cupidExteriorAfter}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "ImageGallery",
-          name: "Kennedy Equity Flip Homes Gallery",
-          description: "Before and after photos of property renovations and flips by Kennedy Equity Investments",
+          name: "Kennedy Equity Property Transformation Gallery",
+          description: "Professional before and after photos showcasing complete property renovations and flips by Kennedy Equity Investments across Greater Austin and surrounding areas",
+          url: "https://kennedyequity.com/gallery",
+          image: [
+            cupidExteriorAfter,
+            cupidKitchenAfter,
+            rosedaleExteriorAfter,
+            rosedaleKitchenAfter,
+            yauponKitchenAfterNew
+          ],
           creator: {
             "@type": "Organization",
-            name: "Kennedy Equity Investments"
-          }
+            name: "Kennedy Equity Investments",
+            url: "https://kennedyequity.com",
+            description: "Austin-based real estate investment company specializing in property renovations and flips"
+          },
+          about: [
+            {
+              "@type": "Place",
+              name: "Austin, Texas",
+              description: "Greater Austin area property renovations"
+            },
+            {
+              "@type": "Service",
+              name: "Property Renovation",
+              description: "Complete home transformations and modern upgrades"
+            },
+            {
+              "@type": "Service", 
+              name: "Real Estate Investment",
+              description: "Strategic property acquisitions and value-add improvements"
+            }
+          ],
+          mainEntity: [
+            {
+              "@type": "PropertyValue",
+              name: "Location Focus",
+              value: "Austin, West Lake Hills, Greater Austin Area"
+            },
+            {
+              "@type": "PropertyValue",
+              name: "Project Types", 
+              value: "Single-family home renovations, kitchen remodels, complete transformations"
+            },
+            {
+              "@type": "PropertyValue",
+              name: "Portfolio Size",
+              value: "15+ completed renovations showcased"
+            }
+          ]
         }}
       />
       <Navbar />
