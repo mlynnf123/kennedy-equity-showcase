@@ -7,7 +7,7 @@ import officeImg from "@/assets/portfolio-office.jpg";
 import flipHomesImg from "@/assets/portfolio-flip-homes.jpg";
 import buyHoldImg from "@/assets/portfolio-buy-hold.jpg";
 import coLivingImg from "@/assets/portfolio-co-living.jpg";
-import soberLivingImg from "@/assets/portfolio-sober-living.jpg";
+import soberLivingImg from "@/assets/portfolio-sober-living.png";
 import remodeledImg from "@/assets/portfolio-remodeled.jpg";
 import tourHomesImg from "@/assets/portfolio-tour-homes.jpg";
 import modernBrickImg from "@/assets/portfolio-modern-brick.jpg";
