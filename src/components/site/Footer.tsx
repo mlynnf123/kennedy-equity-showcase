@@ -4,7 +4,7 @@ export const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <footer className="border-t border-border mt-20">
-      <div className="container py-10 grid gap-8 md:grid-cols-3">
+      <div className="container py-10 grid gap-8 md:grid-cols-4">
         <div>
           <h3 className="text-base font-semibold">Kennedy Equity</h3>
           <p className="text-sm text-muted-foreground mt-2">
@@ -15,7 +15,18 @@ export const Footer = () => {
           <h4 className="text-sm font-semibold mb-2">Company</h4>
           <ul className="space-y-2 text-sm">
             <li><Link className="hover:underline" to="/about">About</Link></li>
+            <li><Link className="hover:underline" to="/gallery">Gallery</Link></li>
             <li><Link className="hover:underline" to="/portfolio">Portfolio</Link></li>
+            <li><Link className="hover:underline" to="/contact">Contact</Link></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-sm font-semibold mb-2">Services</h4>
+          <ul className="space-y-2 text-sm">
+            <li><Link className="hover:underline" to="/gallery">Flip Homes</Link></li>
+            <li><Link className="hover:underline" to="/new-construction">New Construction</Link></li>
+            <li><Link className="hover:underline" to="/portfolio?tab=pmi-austin">PMI Austin</Link></li>
+            <li><Link className="hover:underline" to="/portfolio?tab=residential">Single & Multi Family</Link></li>
           </ul>
         </div>
         <div>
