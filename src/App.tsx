@@ -29,7 +29,7 @@ const App = () => {
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter basename="/kennedy-equity-showcase">
+          <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
