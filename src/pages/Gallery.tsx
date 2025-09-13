@@ -6,6 +6,35 @@ import { Lightbox } from "@/components/ui/lightbox";
 import { useGalleryItems } from "@/hooks/useSanity";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+// Import all the original images
+import rosedaleExteriorBeforeNew from "@/assets/gallery-rosedale-exterior-before-new.jpg";
+import rosedaleKitchenBeforeNew from "@/assets/gallery-rosedale-kitchen-before-new.jpg";
+import rosedaleLivingBeforeNew from "@/assets/gallery-rosedale-living-before-new.jpg";
+import rosedalePorchBeforeNew from "@/assets/gallery-rosedale-porch-before-new.jpg";
+import rosedaleExteriorAfter from "@/assets/gallery-rosedale-exterior-after-new.jpg";
+import rosedaleKitchenAfter from "@/assets/gallery-rosedale-kitchen-after-new.jpg";
+import rosedaleKitchenIslandAfter from "@/assets/gallery-rosedale-kitchen-island-after-new.jpg";
+import rosedaleLivingAfter from "@/assets/gallery-rosedale-living-after-new.jpg";
+import yauponDiningBefore from "@/assets/gallery-yaupon-dining-before.webp";
+import yauponBathroomBefore from "@/assets/gallery-yaupon-bathroom-before.webp";
+import yauponMasterBathroomBefore from "@/assets/gallery-yaupon-master-bathroom-before.webp";
+import yauponKitchenBeforeNew from "@/assets/gallery-yaupon-kitchen-before-new.webp";
+import yauponExteriorBeforeNew from "@/assets/gallery-yaupon-exterior-before-new.webp";
+import yauponKitchenAfter1 from "@/assets/gallery-yaupon-kitchen-after-1.jpg";
+import yauponKitchenAfter2 from "@/assets/gallery-yaupon-kitchen-after-2.jpg";
+import yauponKitchenAfterNew from "@/assets/gallery-yaupon-kitchen-after-new.jpg";
+import yauponLivingAfter from "@/assets/gallery-yaupon-living-after.jpg";
+import cupidExteriorBefore from "@/assets/gallery-cupid-exterior-before-new.jpg";
+import cupidKitchenBefore1 from "@/assets/gallery-cupid-kitchen-before-new-1.jpg";
+import cupidKitchenBefore2 from "@/assets/gallery-cupid-kitchen-before-new-2.jpg";
+import cupidLivingBefore from "@/assets/gallery-cupid-living-before-new.jpg";
+import cupidBedroomBefore from "@/assets/gallery-cupid-bedroom-before-new.jpg";
+import cupidExteriorAfter from "@/assets/gallery-cupid-exterior-after-new.webp";
+import cupidKitchenAfter from "@/assets/gallery-cupid-kitchen-after-new.webp";
+import cupidLivingAfter from "@/assets/gallery-cupid-living-after-new.webp";
+import cupidLoftAfter from "@/assets/gallery-cupid-loft-after-new.webp";
+import cupidBathroomAfter from "@/assets/gallery-cupid-bathroom-after-new.webp";
+
 const Gallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImages, setCurrentImages] = useState<Array<{src: string; alt: string; title: string}>>([]);
@@ -16,6 +45,133 @@ const Gallery = () => {
   const { data: residentialItems } = useGalleryItems("Residential");
   const { data: commercialItems } = useGalleryItems("Commercial");
   const { data: newConstructionItems } = useGalleryItems("New Construction");
+
+  // Define original gallery data as fallback
+  const fallbackGalleryData = [
+    // 3210 Cupid Dr Properties
+    {
+      _id: 'cupid-exterior',
+      propertyName: '3210 Cupid Dr',
+      roomType: 'Front Exterior',
+      beforeImageUrl: cupidExteriorBefore,
+      afterImageUrl: cupidExteriorAfter,
+      description: 'Strategic renovation of this South Austin brick home featuring updated interior spaces and enhanced functionality while maintaining its classic charm.',
+      category: 'Residential',
+      yearCompleted: '2023'
+    },
+    {
+      _id: 'cupid-kitchen',
+      propertyName: '3210 Cupid Dr',
+      roomType: 'Kitchen',
+      beforeImageUrl: cupidKitchenBefore1,
+      afterImageUrl: cupidKitchenAfter,
+      description: 'Complete kitchen transformation with sage green cabinets, white quartz island, and designer fixtures',
+      category: 'Residential',
+      yearCompleted: '2023'
+    },
+    {
+      _id: 'cupid-living',
+      propertyName: '3210 Cupid Dr',
+      roomType: 'Living Area',
+      beforeImageUrl: cupidLivingBefore,
+      afterImageUrl: cupidLivingAfter,
+      description: 'Open concept living with floating staircase and contemporary design',
+      category: 'Residential',
+      yearCompleted: '2023'
+    },
+    {
+      _id: 'cupid-loft',
+      propertyName: '3210 Cupid Dr',
+      roomType: 'Loft Office',
+      beforeImageUrl: cupidBedroomBefore,
+      afterImageUrl: cupidLoftAfter,
+      description: 'Converted bedroom to sophisticated loft office with modern railings',
+      category: 'Residential',
+      yearCompleted: '2023'
+    },
+    {
+      _id: 'cupid-bathroom',
+      propertyName: '3210 Cupid Dr',
+      roomType: 'Master Bathroom',
+      beforeImageUrl: cupidKitchenBefore2,
+      afterImageUrl: cupidBathroomAfter,
+      description: 'Luxury spa bathroom with glass shower and freestanding tub',
+      category: 'Residential',
+      yearCompleted: '2023'
+    },
+    // 4506 Rosedale Ave Properties
+    {
+      _id: 'rosedale-exterior',
+      propertyName: '4506 Rosedale Ave',
+      roomType: 'Front Exterior',
+      beforeImageUrl: rosedaleExteriorBeforeNew,
+      afterImageUrl: rosedaleExteriorAfter,
+      description: 'Beautiful craftsman renovation with white columns and updated siding',
+      category: 'Residential',
+      yearCompleted: '2023'
+    },
+    {
+      _id: 'rosedale-kitchen',
+      propertyName: '4506 Rosedale Ave',
+      roomType: 'Kitchen',
+      beforeImageUrl: rosedaleKitchenBeforeNew,
+      afterImageUrl: rosedaleKitchenAfter,
+      description: 'Stunning kitchen with white shaker cabinets and marble countertops',
+      category: 'Residential',
+      yearCompleted: '2023'
+    },
+    {
+      _id: 'rosedale-living',
+      propertyName: '4506 Rosedale Ave',
+      roomType: 'Living Room',
+      beforeImageUrl: rosedaleLivingBeforeNew,
+      afterImageUrl: rosedaleLivingAfter,
+      description: 'Open living space with updated staircase and hardwood floors',
+      category: 'Residential',
+      yearCompleted: '2023'
+    },
+    {
+      _id: 'rosedale-dining',
+      propertyName: '4506 Rosedale Ave',
+      roomType: 'Kitchen Island & Dining',
+      beforeImageUrl: rosedalePorchBeforeNew,
+      afterImageUrl: rosedaleKitchenIslandAfter,
+      description: 'Large gray kitchen island with marble top and elegant dining area',
+      category: 'Residential',
+      yearCompleted: '2023'
+    },
+    // 1900 Yaupon Valley Rd Properties
+    {
+      _id: 'yaupon-exterior',
+      propertyName: '1900 Yaupon Valley Rd',
+      roomType: 'Front Exterior',
+      beforeImageUrl: yauponExteriorBeforeNew,
+      afterImageUrl: yauponKitchenAfter1,
+      description: 'Hill country home renovation preserving natural beauty',
+      category: 'Residential',
+      yearCompleted: '2023'
+    },
+    {
+      _id: 'yaupon-kitchen',
+      propertyName: '1900 Yaupon Valley Rd',
+      roomType: 'Kitchen',
+      beforeImageUrl: yauponKitchenBeforeNew,
+      afterImageUrl: yauponKitchenAfterNew,
+      description: 'Modern kitchen with marble countertops and floating shelves',
+      category: 'Residential',
+      yearCompleted: '2023'
+    },
+    {
+      _id: 'yaupon-living',
+      propertyName: '1900 Yaupon Valley Rd',
+      roomType: 'Living Room',
+      beforeImageUrl: yauponDiningBefore,
+      afterImageUrl: yauponLivingAfter,
+      description: 'Transformed living space with exposed white beams',
+      category: 'Residential',
+      yearCompleted: '2023'
+    }
+  ];
 
   const openLightbox = (images: Array<{src: string; alt: string; title: string}>, index: number) => {
     setCurrentImages(images);
@@ -69,15 +225,17 @@ const Gallery = () => {
       );
     }
 
-    if (error) {
-      return (
-        <div className="text-center text-muted-foreground py-8">
-          Unable to load gallery images at this time.
-        </div>
-      );
+    // Use fallback data if Sanity data is empty or errored, but filter by category if specified
+    let dataToUse = items;
+    if (!dataToUse || dataToUse.length === 0 || error) {
+      dataToUse = title === "All Projects" ? fallbackGalleryData : 
+                  title === "Residential Projects" ? fallbackGalleryData.filter(item => item.category === 'Residential') :
+                  title === "Commercial Projects" ? fallbackGalleryData.filter(item => item.category === 'Commercial') :
+                  title === "New Construction Projects" ? fallbackGalleryData.filter(item => item.category === 'New Construction') :
+                  fallbackGalleryData;
     }
 
-    const properties = groupItemsByProperty(items || []);
+    const properties = groupItemsByProperty(dataToUse || []);
 
     if (properties.length === 0) {
       return (

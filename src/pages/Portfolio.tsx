@@ -3,6 +3,13 @@ import Footer from "@/components/site/Footer";
 import SEO from "@/components/SEO";
 import PortfolioCard from "@/components/site/PortfolioCard";
 import residentialImg from "@/assets/portfolio-residential.jpg";
+import flipHomesImg from "@/assets/portfolio-flip-homes.jpg";
+import buyHoldImg from "@/assets/portfolio-buy-hold.jpg";
+import coLivingImg from "@/assets/portfolio-co-living.jpg";
+import soberLivingImg from "@/assets/portfolio-sober-living.png";
+import remodeledImg from "@/assets/portfolio-remodeled.jpg";
+import tourHomesImg from "@/assets/portfolio-tour-homes.jpg";
+import modernBrickImg from "@/assets/portfolio-modern-brick.jpg";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useSearchParams, Link } from "react-router-dom";
@@ -17,6 +24,95 @@ const Portfolio = () => {
   const { data: pmiAustinProperties } = usePortfolioProperties("PMI Austin");
   const { data: residentialProperties } = usePortfolioProperties("Single & Multi Family");
   const { data: constructionProperties } = usePortfolioProperties("Construction");
+
+  // Fallback portfolio data with original images
+  const fallbackPmiAustin = [{
+    _id: 'pmi-austin-fallback',
+    name: 'PMI Austin',
+    description: '400 units under management, specializing in single family management across Greater Austin and surrounding areas. Founded in 2019.',
+    location: 'Greater Austin and Surrounding Areas',
+    sector: 'PMI Austin',
+    featuredImageUrl: residentialImg,
+    propertyType: 'Property Management Company',
+    investmentAmount: '400 units',
+    status: 'Active'
+  }];
+
+  const fallbackResidential = [
+    {
+      _id: 'flip-homes-fallback',
+      name: 'Flip Homes',
+      description: 'Strategic property renovations and resales in high-demand areas.',
+      location: 'Greater Austin and Surrounding Areas',
+      sector: 'Single & Multi Family',
+      featuredImageUrl: flipHomesImg,
+      propertyType: 'Residential Investment',
+      status: 'Active'
+    },
+    {
+      _id: 'buy-hold-fallback',
+      name: 'Buy and Hold Properties',
+      description: 'Long-term rental properties generating consistent cash flow.',
+      location: 'Greater Austin and Surrounding Areas',
+      sector: 'Single & Multi Family',
+      featuredImageUrl: buyHoldImg,
+      propertyType: 'Rental Properties',
+      status: 'Active'
+    },
+    {
+      _id: 'co-living-fallback',
+      name: 'Co-Living Spaces',
+      description: 'Modern co-living spaces for professionals and students.',
+      location: 'Greater Austin and Surrounding Areas',
+      sector: 'Single & Multi Family',
+      featuredImageUrl: coLivingImg,
+      propertyType: 'Co-Living',
+      status: 'Active'
+    },
+    {
+      _id: 'sober-living-fallback',
+      name: 'Lions Den Sober Living',
+      description: 'Supportive residential facilities for recovery communities.',
+      location: 'Greater Austin and Surrounding Areas',
+      sector: 'Single & Multi Family',
+      featuredImageUrl: soberLivingImg,
+      propertyType: 'Sober Living Facilities',
+      status: 'Active'
+    }
+  ];
+
+  const fallbackConstruction = [
+    {
+      _id: 'remodeled-fallback',
+      name: 'Remodelled Homes',
+      description: 'Complete home renovations transforming properties into modern living spaces.',
+      location: 'Greater Austin and Surrounding Areas',
+      sector: 'Construction',
+      featuredImageUrl: remodeledImg,
+      propertyType: 'Renovation Projects',
+      status: 'Active'
+    },
+    {
+      _id: 'tour-homes-fallback',
+      name: 'Tour Homes',
+      description: 'Showcase homes demonstrating our construction quality and design capabilities.',
+      location: 'Greater Austin and Surrounding Areas',
+      sector: 'Construction',
+      featuredImageUrl: tourHomesImg,
+      propertyType: 'Showcase Properties',
+      status: 'Active'
+    },
+    {
+      _id: 'custom-construction-fallback',
+      name: 'New Custom Construction',
+      description: 'Custom homes tailored to client specifications with premium finishes.',
+      location: 'Greater Austin and Surrounding Areas',
+      sector: 'Construction',
+      featuredImageUrl: modernBrickImg,
+      propertyType: 'Custom Homes',
+      status: 'Active'
+    }
+  ];
 
   useEffect(() => {
     const tab = searchParams.get("tab");
@@ -62,7 +158,7 @@ const Portfolio = () => {
             </TabsList>
 
             <TabsContent value="pmi-austin" className="mt-6">
-              {pmiAustinProperties?.map((property) => (
+              {(pmiAustinProperties && pmiAustinProperties.length > 0 ? pmiAustinProperties : fallbackPmiAustin)?.map((property) => (
                 <div key={property._id} className="relative p-6 rounded-lg border border-border bg-card">
                   <div className="md:flex items-start gap-6">
                     <img 
@@ -117,7 +213,7 @@ const Portfolio = () => {
                    </p>
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {residentialProperties?.map((property) => {
+                  {(residentialProperties && residentialProperties.length > 0 ? residentialProperties : fallbackResidential)?.map((property) => {
                     // Special actions for specific properties
                     let action = null;
                     if (property.name === "Flip Homes") {
@@ -169,7 +265,7 @@ const Portfolio = () => {
                    </p>
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {constructionProperties?.map((property) => (
+                  {(constructionProperties && constructionProperties.length > 0 ? constructionProperties : fallbackConstruction)?.map((property) => (
                     <PortfolioCard
                       key={property._id}
                       image={property.featuredImageUrl || residentialImg}
