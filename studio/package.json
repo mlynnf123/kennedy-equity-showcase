@@ -1,0 +1,37 @@
+{
+  "name": "kennedy-equity-studio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "UNLICENSED",
+  "author": "Kennedy Equity <info@pmiaustin.net>",
+  "type": "module",
+  "scripts": {
+    "build": "sanity build",
+    "dev": "sanity dev",
+    "deploy": "sanity deploy",
+    "start": "sanity start"
+  },
+  "dependencies": {
+    "@sanity/vision": "^3.59.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-is": "^18.2.0",
+    "sanity": "^3.59.1",
+    "styled-components": "^6.1.13"
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^4.0.0",
+    "@types/react": "^18.3.12",
+    "eslint": "^8.6.0",
+    "prettier": "^3.0.2",
+    "typescript": "^5.1.6"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 100,
+    "bracketSpacing": false,
+    "singleQuote": true
+  }
+}

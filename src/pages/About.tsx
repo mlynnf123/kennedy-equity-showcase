@@ -1,8 +1,11 @@
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
 import SEO from "@/components/SEO";
+import { useTeamMembers } from "@/hooks/useSanity";
 
 const About = () => {
+  const { data: teamMembers, isLoading, error } = useTeamMembers();
+
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
@@ -32,25 +35,45 @@ const About = () => {
             <li>Risk-aware, tax-efficient structures</li>
             <li>Operational excellence and community impact</li>
           </ul>
-          <h2 className="text-xl font-semibold mt-8">Daniel Kennedy, Founder</h2>
-          <p className="text-muted-foreground mt-2">
-            Real estate has been Daniel Kennedy's passion since his early years. After relocating to Austin in 2013, 
-            Daniel has built a comprehensive understanding of the local real estate market through hands-on experience 
-            across multiple sectors. From investment property acquisition to founding Avenue B Development, his custom 
-            home building firm, Daniel brings over a decade of diverse real estate expertise to Kennedy Equity.
-          </p>
-          <p className="text-muted-foreground mt-4">
-            As both a property owner and manager, Daniel understands firsthand the importance of professional, 
-            diligent property management. His personal portfolio of rental properties has provided valuable insights 
-            into maintaining assets that remain attractive to tenants while maximizing value for owners. This 
-            dual perspective drives Kennedy Equity's commitment to excellence in property management and investment.
-          </p>
-          <p className="text-muted-foreground mt-4">
-            Daniel remains actively engaged in Austin's real estate community as a member of NARPM (National 
-            Association of Residential Property Managers). When not focused on growing Kennedy Equity's portfolio, 
-            he enjoys Austin's outdoor lifestyle with his wife Renee, a licensed Texas Realtor, and their two 
-            daughters, Caila and Faith. The Kennedy family has proudly called Austin home for over a decade.
-          </p>
+          {/* Team Members Section */}
+          {isLoading ? (
+            <div className="mt-8">
+              <div className="h-6 bg-muted animate-pulse rounded mb-4"></div>
+              <div className="space-y-3">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="h-4 bg-muted animate-pulse rounded"></div>
+                ))}
+              </div>
+            </div>
+          ) : error ? (
+            <div className="mt-8 text-muted-foreground">
+              Unable to load team information at this time.
+            </div>
+          ) : (
+            teamMembers?.map((member) => (
+              <div key={member._id} className="mt-8">
+                <div className="flex items-start gap-6">
+                  {member.photo && (
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      className="w-32 h-32 rounded-lg object-cover flex-shrink-0"
+                    />
+                  )}
+                  <div className="flex-1">
+                    <h2 className="text-xl font-semibold">{member.name}, {member.title}</h2>
+                    {member.bio && (
+                      <div className="text-muted-foreground mt-2 space-y-4">
+                        {member.bio.split('\n\n').map((paragraph, index) => (
+                          <p key={index}>{paragraph}</p>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
         </article>
       </main>
       <Footer />

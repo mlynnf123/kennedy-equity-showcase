@@ -3,22 +3,20 @@ import Footer from "@/components/site/Footer";
 import SEO from "@/components/SEO";
 import PortfolioCard from "@/components/site/PortfolioCard";
 import residentialImg from "@/assets/portfolio-residential.jpg";
-import officeImg from "@/assets/portfolio-office.jpg";
-import flipHomesImg from "@/assets/portfolio-flip-homes.jpg";
-import buyHoldImg from "@/assets/portfolio-buy-hold.jpg";
-import coLivingImg from "@/assets/portfolio-co-living.jpg";
-import soberLivingImg from "@/assets/portfolio-sober-living.png";
-import remodeledImg from "@/assets/portfolio-remodeled.jpg";
-import tourHomesImg from "@/assets/portfolio-tour-homes.jpg";
-import modernBrickImg from "@/assets/portfolio-modern-brick.jpg";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useSearchParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { usePortfolioProperties } from "@/hooks/useSanity";
 
 const Portfolio = () => {
   const [searchParams] = useSearchParams();
   const [activeTab, setActiveTab] = useState("pmi-austin");
+  
+  // Fetch portfolio data from Sanity
+  const { data: pmiAustinProperties } = usePortfolioProperties("PMI Austin");
+  const { data: residentialProperties } = usePortfolioProperties("Single & Multi Family");
+  const { data: constructionProperties } = usePortfolioProperties("Construction");
 
   useEffect(() => {
     const tab = searchParams.get("tab");
@@ -64,31 +62,50 @@ const Portfolio = () => {
             </TabsList>
 
             <TabsContent value="pmi-austin" className="mt-6">
-              <div className="relative p-6 rounded-lg border border-border bg-card">
-                <div className="md:flex items-start gap-6">
-                  <img src={residentialImg} alt="PMI Austin property management services" className="rounded-md w-full md:w-1/2 object-cover" />
-                  <div className="flex-1 mt-4 md:mt-0">
-                    <h2 className="text-2xl font-semibold">PMI Austin</h2>
-                     <p className="text-muted-foreground mt-2">
-                       400 units under management, specializing in single family management across Greater Austin and surrounding areas. Founded in 2019.
-                     </p>
-                     <ul className="mt-3 text-sm list-disc pl-5 text-muted-foreground space-y-1">
-                       <li>400 units under management</li>
-                       <li>Specializing in single family management</li>
-                       <li>Greater Austin and surrounding areas</li>
-                       <li>Founded in 2019</li>
-                     </ul>
-                     <a
-                       href="https://www.pmiaustin.net"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block mt-4"
-                    >
-                      <Button variant="cta">Visit PMI Austin</Button>
-                    </a>
+              {pmiAustinProperties?.map((property) => (
+                <div key={property._id} className="relative p-6 rounded-lg border border-border bg-card">
+                  <div className="md:flex items-start gap-6">
+                    <img 
+                      src={property.featuredImage || residentialImg} 
+                      alt={`${property.name} - ${property.description}`} 
+                      className="rounded-md w-full md:w-1/2 object-cover" 
+                    />
+                    <div className="flex-1 mt-4 md:mt-0">
+                      <h2 className="text-2xl font-semibold">{property.name}</h2>
+                      <p className="text-muted-foreground mt-2">
+                        {property.description}
+                      </p>
+                      {property.location && (
+                        <p className="mt-3 text-sm text-muted-foreground">
+                          <strong>Location:</strong> {property.location}
+                        </p>
+                      )}
+                      {property.investmentAmount && (
+                        <p className="text-sm text-muted-foreground">
+                          <strong>Investment:</strong> {property.investmentAmount}
+                        </p>
+                      )}
+                      {property.status && (
+                        <p className="text-sm text-muted-foreground">
+                          <strong>Status:</strong> {property.status}
+                        </p>
+                      )}
+                      <a
+                        href="https://www.pmiaustin.net"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block mt-4"
+                      >
+                        <Button variant="cta">Visit PMI Austin</Button>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )) || (
+                <div className="text-center text-muted-foreground py-8">
+                  Loading PMI Austin properties...
+                </div>
+              )}
             </TabsContent>
 
             <TabsContent value="residential" className="mt-6">
@@ -99,63 +116,46 @@ const Portfolio = () => {
                      Our residential portfolio includes flip homes, buy and hold properties, co-living, and sober living across Greater Austin and surrounding areas.
                    </p>
                 </div>
-                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                   <PortfolioCard
-                     image={flipHomesImg}
-                     name="Flip Homes"
-                     description="Strategic property renovations and resales in high-demand areas."
-                     location="Greater Austin and Surrounding Areas"
-                     sector=""
-                     action={
-                       <Link
-                         to="/gallery"
-                         className="inline-block"
-                       >
-                         <Button variant="cta" size="lg">View Gallery</Button>
-                       </Link>
-                     }
-                   />
-                   <PortfolioCard
-                     image={buyHoldImg}
-                     name="Buy and Hold"
-                     description="Long-term rental properties generating consistent cash flow."
-                     location="Greater Austin and Surrounding Areas"
-                     sector=""
-                   />
-                    <PortfolioCard
-                      image={coLivingImg}
-                      name="Co-Living"
-                      description="Modern co-living spaces for professionals and students."
-                      location="Greater Austin and Surrounding Areas"
-                      sector=""
-                      action={
-                        <a
-                          href="https://assetst.com/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block"
-                        >
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {residentialProperties?.map((property) => {
+                    // Special actions for specific properties
+                    let action = null;
+                    if (property.name === "Flip Homes") {
+                      action = (
+                        <Link to="/gallery" className="inline-block">
+                          <Button variant="cta" size="lg">View Gallery</Button>
+                        </Link>
+                      );
+                    } else if (property.name === "Co-Living Spaces") {
+                      action = (
+                        <a href="https://assetst.com/" target="_blank" rel="noopener noreferrer" className="inline-block">
                           <Button variant="cta" size="lg">Visit website</Button>
                         </a>
-                      }
-                    />
-                   <PortfolioCard
-                     image={soberLivingImg}
-                     name="Sober Living"
-                     description="Supportive residential facilities for recovery communities."
-                     location="Greater Austin and Surrounding Areas"
-                     sector=""
-                     action={
-                       <a
-                         href="https://lionsdensoberliving.com/"
-                         target="_blank"
-                         rel="noopener noreferrer"
-                         className="inline-block"
-                       >
-                         <Button variant="cta" size="lg">Visit website</Button>
-                       </a>
-                     }
-                   />
+                      );
+                    } else if (property.name === "Lions Den Sober Living") {
+                      action = (
+                        <a href="https://lionsdensoberliving.com/" target="_blank" rel="noopener noreferrer" className="inline-block">
+                          <Button variant="cta" size="lg">Visit website</Button>
+                        </a>
+                      );
+                    }
+
+                    return (
+                      <PortfolioCard
+                        key={property._id}
+                        image={property.featuredImage || residentialImg}
+                        name={property.name}
+                        description={property.description || ""}
+                        location={property.location || ""}
+                        sector=""
+                        action={action}
+                      />
+                    );
+                  }) || (
+                    <div className="col-span-full text-center text-muted-foreground py-8">
+                      Loading residential properties...
+                    </div>
+                  )}
                 </div>
               </div>
             </TabsContent>
@@ -168,28 +168,21 @@ const Portfolio = () => {
                      Our construction division specializes in remodelled homes, tour homes, and new custom construction throughout Greater Austin and surrounding areas.
                    </p>
                 </div>
-                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                   <PortfolioCard
-                     image={remodeledImg}
-                     name="Remodelled Homes"
-                     description="Complete home renovations transforming properties into modern living spaces."
-                     location="Greater Austin and Surrounding Areas"
-                     sector=""
-                   />
-                   <PortfolioCard
-                     image={tourHomesImg}
-                     name="Tour Homes"
-                     description="Showcase homes demonstrating our construction quality and design capabilities."
-                     location="Greater Austin and Surrounding Areas"
-                     sector=""
-                   />
-                   <PortfolioCard
-                     image={modernBrickImg}
-                     name="New Custom Construction"
-                     description="Custom homes tailored to client specifications with premium finishes."
-                     location="Greater Austin and Surrounding Areas"
-                     sector=""
-                   />
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {constructionProperties?.map((property) => (
+                    <PortfolioCard
+                      key={property._id}
+                      image={property.featuredImage || residentialImg}
+                      name={property.name}
+                      description={property.description || ""}
+                      location={property.location || ""}
+                      sector=""
+                    />
+                  )) || (
+                    <div className="col-span-full text-center text-muted-foreground py-8">
+                      Loading construction properties...
+                    </div>
+                  )}
                 </div>
               </div>
             </TabsContent>

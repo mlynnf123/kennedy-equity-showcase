@@ -6,8 +6,11 @@ import officeImg from "@/assets/portfolio-office.jpg";
 import residentialImg from "@/assets/portfolio-residential.jpg";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useCompanyStats } from "@/hooks/useSanity";
 
 const Index = () => {
+  const { data: companyStats, isLoading: statsLoading, error: statsError } = useCompanyStats();
+
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
@@ -48,24 +51,29 @@ const Index = () => {
         {/* Key Statistics Section */}
         <section className="container mt-16">
           <h2 className="text-2xl font-normal text-center mb-8">Our Track Record</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center p-6 rounded-lg border border-border bg-card">
-              <div className="text-3xl text-primary">$25M+</div>
-              <div className="text-sm text-muted-foreground mt-2">Investment Volume</div>
+          {statsLoading ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="text-center p-6 rounded-lg border border-border bg-card">
+                  <div className="h-8 bg-muted animate-pulse rounded mb-2"></div>
+                  <div className="h-4 bg-muted animate-pulse rounded"></div>
+                </div>
+              ))}
             </div>
-            <div className="text-center p-6 rounded-lg border border-border bg-card">
-              <div className="text-3xl text-primary">400+</div>
-              <div className="text-sm text-muted-foreground mt-2">Properties Managed</div>
+          ) : statsError ? (
+            <div className="text-center text-muted-foreground">
+              Unable to load statistics at this time.
             </div>
-            <div className="text-center p-6 rounded-lg border border-border bg-card">
-              <div className="text-3xl text-primary">5+</div>
-              <div className="text-sm text-muted-foreground mt-2">Years in Business</div>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {companyStats?.map((stat) => (
+                <div key={stat._id} className="text-center p-6 rounded-lg border border-border bg-card">
+                  <div className="text-3xl text-primary">{stat.statValue}</div>
+                  <div className="text-sm text-muted-foreground mt-2">{stat.statName}</div>
+                </div>
+              ))}
             </div>
-            <div className="text-center p-6 rounded-lg border border-border bg-card">
-              <div className="text-3xl text-primary">98%</div>
-              <div className="text-sm text-muted-foreground mt-2">Client Satisfaction</div>
-            </div>
-          </div>
+          )}
         </section>
 
         {/* Service Areas Section */}

@@ -15,11 +15,17 @@ npm run dev
 # Build for production
 npm run build
 
+# Build for development mode
+npm run build:dev
+
 # Preview production build
 npm run preview
 
 # Run ESLint
 npm run lint
+
+# Deploy to GitHub Pages
+npm run deploy
 ```
 
 ## Architecture Overview
@@ -42,6 +48,11 @@ npm run lint
 - `src/pages/Index.tsx`: Homepage with all major sections
 - `tailwind.config.ts`: Theme customization and color system
 - `vite.config.ts`: Build configuration and path aliases
+
+### Deployment Configuration
+- Base path: `/kennedy-equity-showcase/` configured for GitHub Pages
+- Build output: `dist/` directory
+- 404 handling: Custom 404.html for client-side routing on GitHub Pages
 
 ### Path Aliases
 - `@/*` maps to `./src/*` (e.g., `import { Button } from "@/components/ui/button"`)
@@ -103,3 +114,24 @@ export function Component({ className, ...props }: ComponentProps) {
 1. Use React Hook Form for form state
 2. Define Zod schema for validation
 3. See contact forms for reference implementation
+
+### Key Dependencies
+- **UI Framework**: React 18.3.1 with TypeScript 5.8.3
+- **Build Tool**: Vite 5.4.19 with SWC for fast refresh
+- **Styling**: Tailwind CSS 3.4.17 with tailwindcss-animate
+- **Components**: Full Radix UI suite (Dialog, Dropdown, Tabs, etc.)
+- **Forms**: react-hook-form + @hookform/resolvers + zod
+- **Icons**: lucide-react
+- **Date Handling**: date-fns
+- **Notifications**: sonner for toast messages
+- **Charts**: recharts
+- **Carousel**: embla-carousel-react
+
+### Project Context
+This showcase website includes:
+- Portfolio pages for real estate properties
+- Before/after gallery with lightbox functionality
+- Contact forms with validation
+- ChatBot component for user interaction
+- Responsive design with mobile navigation
+- Multiple routes: Home, About, Portfolio, Gallery, New Construction, Contact
