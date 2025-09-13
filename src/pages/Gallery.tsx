@@ -19,6 +19,7 @@ import yauponDiningBefore from "@/assets/gallery-yaupon-dining-before.webp";
 import yauponBathroomBefore from "@/assets/gallery-yaupon-bathroom-before.webp";
 import yauponMasterBathroomBefore from "@/assets/gallery-yaupon-master-bathroom-before.webp";
 import yauponKitchenBeforeNew from "@/assets/gallery-yaupon-kitchen-before-new.webp";
+import yauponExteriorBeforeNew from "@/assets/gallery-yaupon-exterior-before-new.webp";
 import yauponKitchenAfter1 from "@/assets/gallery-yaupon-kitchen-after-1.jpg";
 import yauponKitchenAfter2 from "@/assets/gallery-yaupon-kitchen-after-2.jpg";
 import yauponKitchenAfterNew from "@/assets/gallery-yaupon-kitchen-after-new.jpg";
@@ -141,6 +142,16 @@ const Gallery = () => {
     },
     // 1900 Yaupon Valley Rd Properties
     {
+      _id: 'yaupon-exterior',
+      propertyName: '1900 Yaupon Valley Rd',
+      roomType: 'Front Exterior',
+      beforeImageUrl: yauponExteriorBeforeNew,
+      afterImageUrl: null, // Client will upload this later
+      description: 'Hill country home renovation preserving natural beauty',
+      category: 'Residential',
+      yearCompleted: '2023'
+    },
+    {
       _id: 'yaupon-kitchen',
       propertyName: '1900 Yaupon Valley Rd',
       roomType: 'Kitchen',
@@ -223,6 +234,14 @@ const Gallery = () => {
                   title === "New Construction Projects" ? fallbackGalleryData.filter(item => item.category === 'New Construction') :
                   fallbackGalleryData;
     }
+    
+    // Filter out items that don't have both before AND after images
+    dataToUse = dataToUse.filter(item => 
+      item.beforeImageUrl && 
+      item.afterImageUrl && 
+      item.beforeImageUrl !== "/placeholder.svg" && 
+      item.afterImageUrl !== "/placeholder.svg"
+    );
 
     const properties = groupItemsByProperty(dataToUse || []);
 
