@@ -114,12 +114,15 @@ export function FullscreenCarousel({ images, initialIndex, isOpen, onClose }: Fu
       
       switch (e.key) {
         case 'Escape':
+          e.preventDefault();
           onClose();
           break;
         case 'ArrowLeft':
+          e.preventDefault();
           goToPrevious();
           break;
         case 'ArrowRight':
+          e.preventDefault();
           goToNext();
           break;
       }
@@ -135,19 +138,34 @@ export function FullscreenCarousel({ images, initialIndex, isOpen, onClose }: Fu
       document.removeEventListener('keydown', handleKeyPress);
       document.body.style.overflow = '';
     };
-  }, [isOpen, goToPrevious, goToNext, onClose]);
+  }, [isOpen]);
+
+  // Update current index when initial index changes
+  React.useEffect(() => {
+    if (isOpen) {
+      setCurrentIndex(initialIndex);
+    }
+  }, [isOpen, initialIndex]);
 
   if (!isOpen || !images || images.length === 0) return null;
 
   return (
     <div 
       className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
-      onClick={onClose}
+      onClick={(e) => {
+        // Only close if clicking the background (not the image container)
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
     >
       {/* Close button */}
       <button
-        onClick={onClose}
-        className="absolute top-4 right-4 text-white/80 hover:text-white p-2 z-10"
+        onClick={(e) => {
+          e.stopPropagation();
+          onClose();
+        }}
+        className="absolute top-4 right-4 text-white/80 hover:text-white p-2 z-10 bg-black/50 rounded-full hover:bg-black/70 transition-colors"
         aria-label="Close fullscreen"
       >
         <X className="w-8 h-8" />
@@ -177,15 +195,21 @@ export function FullscreenCarousel({ images, initialIndex, isOpen, onClose }: Fu
       {images.length > 1 && (
         <>
           <button
-            onClick={goToPrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 text-white p-3 rounded-full hover:bg-white/20 transition-colors"
+            onClick={(e) => {
+              e.stopPropagation();
+              goToPrevious();
+            }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 text-white p-3 rounded-full hover:bg-white/20 transition-colors z-10"
             aria-label="Previous image"
           >
             <ChevronLeft className="w-8 h-8" />
           </button>
           <button
-            onClick={goToNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 text-white p-3 rounded-full hover:bg-white/20 transition-colors"
+            onClick={(e) => {
+              e.stopPropagation();
+              goToNext();
+            }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 text-white p-3 rounded-full hover:bg-white/20 transition-colors z-10"
             aria-label="Next image"
           >
             <ChevronRight className="w-8 h-8" />
