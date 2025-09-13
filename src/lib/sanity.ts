@@ -5,7 +5,7 @@ import { createClient } from '@sanity/client';
 export const client = createClient({
   projectId: '0wzf8jx8', // Kennedy Equity project ID
   dataset: 'production',
-  useCdn: true, // Use CDN for faster reads
+  useCdn: false, // Disable CDN to see changes immediately
   apiVersion: '2023-10-01', // Use current date in YYYY-MM-DD format
 });
 

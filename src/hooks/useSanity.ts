@@ -7,7 +7,7 @@ export const usePortfolioProperties = (sector?: string) => {
   return useQuery({
     queryKey: ['portfolioProperties', sector],
     queryFn: () => sanityApi.getPortfolioProperties(sector),
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 0, // No caching - always fetch fresh data
   });
 };
 
@@ -15,7 +15,7 @@ export const useGalleryItems = (category?: string) => {
   return useQuery({
     queryKey: ['galleryItems', category],
     queryFn: () => sanityApi.getGalleryItems(category),
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 0, // No caching - always fetch fresh data
   });
 };
 
@@ -23,7 +23,7 @@ export const useCompanyStats = () => {
   return useQuery({
     queryKey: ['companyStats'],
     queryFn: sanityApi.getCompanyStats,
-    staleTime: 10 * 60 * 1000, // 10 minutes
+    staleTime: 0, // No caching - always fetch fresh data
   });
 };
 
@@ -31,6 +31,6 @@ export const useTeamMembers = () => {
   return useQuery({
     queryKey: ['teamMembers'],
     queryFn: sanityApi.getTeamMembers,
-    staleTime: 10 * 60 * 1000, // 10 minutes
+    staleTime: 0, // No caching - always fetch fresh data
   });
 };
