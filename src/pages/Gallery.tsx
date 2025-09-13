@@ -241,6 +241,14 @@ const Gallery = () => {
     // If we have Sanity data, merge it with fallback images where needed
     if (dataToUse && dataToUse.length > 0 && !error) {
       dataToUse = dataToUse.map(sanityItem => {
+        // Debug logging
+        console.log('Sanity item:', sanityItem.propertyName, sanityItem.roomType, {
+          beforeImageUrls: sanityItem.beforeImageUrls,
+          afterImageUrls: sanityItem.afterImageUrls,
+          beforeImageUrl: sanityItem.beforeImageUrl,
+          afterImageUrl: sanityItem.afterImageUrl
+        });
+        
         // Find matching fallback item
         const fallbackItem = fallbackGalleryData.find(fb => 
           fb.propertyName === sanityItem.propertyName && 
@@ -255,6 +263,8 @@ const Gallery = () => {
         const afterImages = sanityItem.afterImageUrls?.filter(Boolean) || 
                           (sanityItem.afterImageUrl ? [sanityItem.afterImageUrl] : null) ||
                           (fallbackItem?.afterImageUrl ? [fallbackItem.afterImageUrl] : []);
+
+        console.log('Merged result:', { beforeImages, afterImages });
 
         return {
           ...sanityItem,

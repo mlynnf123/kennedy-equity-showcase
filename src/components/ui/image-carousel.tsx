@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -95,8 +95,6 @@ interface FullscreenCarouselProps {
 export function FullscreenCarousel({ images, initialIndex, isOpen, onClose }: FullscreenCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
-  if (!isOpen || !images || images.length === 0) return null;
-
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) => 
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
@@ -109,19 +107,57 @@ export function FullscreenCarousel({ images, initialIndex, isOpen, onClose }: Fu
     );
   };
 
+  // Handle keyboard events and escape
+  React.useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (!isOpen) return;
+      
+      switch (e.key) {
+        case 'Escape':
+          onClose();
+          break;
+        case 'ArrowLeft':
+          goToPrevious();
+          break;
+        case 'ArrowRight':
+          goToNext();
+          break;
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyPress);
+      // Prevent background scrolling
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, goToPrevious, goToNext, onClose]);
+
+  if (!isOpen || !images || images.length === 0) return null;
+
   return (
-    <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center">
+    <div 
+      className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+      onClick={onClose}
+    >
       {/* Close button */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 text-white/80 hover:text-white p-2"
+        className="absolute top-4 right-4 text-white/80 hover:text-white p-2 z-10"
         aria-label="Close fullscreen"
       >
         <X className="w-8 h-8" />
       </button>
 
       {/* Main image */}
-      <div className="relative w-full h-full flex items-center justify-center p-8">
+      <div 
+        className="relative w-full h-full flex items-center justify-center p-8"
+        onClick={(e) => e.stopPropagation()}
+      >
         <img
           src={images[currentIndex].src}
           alt={images[currentIndex].alt}

@@ -26,7 +26,6 @@ export default defineType({
           hotspot: true,
         },
       }],
-      validation: (Rule) => Rule.min(1).error('At least one before image is required'),
     }),
     defineField({
       name: 'afterImages',
@@ -38,14 +37,14 @@ export default defineType({
           hotspot: true,
         },
       }],
-      validation: (Rule) => Rule.min(1).error('At least one after image is required'),
     }),
     // Keep old fields for backward compatibility
     defineField({
       name: 'beforeImage',
       title: 'Before Image (Legacy)',
       type: 'image',
-      hidden: true,
+      hidden: () => true,
+      readOnly: true,
       options: {
         hotspot: true,
       },
@@ -54,7 +53,8 @@ export default defineType({
       name: 'afterImage',
       title: 'After Image (Legacy)',
       type: 'image',
-      hidden: true,
+      hidden: () => true, 
+      readOnly: true,
       options: {
         hotspot: true,
       },
