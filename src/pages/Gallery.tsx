@@ -225,9 +225,27 @@ const Gallery = () => {
       );
     }
 
-    // Use fallback data if Sanity data is empty or errored, but filter by category if specified
+    // Merge Sanity data with fallback images
     let dataToUse = items;
-    if (!dataToUse || dataToUse.length === 0 || error) {
+    
+    // If we have Sanity data, merge it with fallback images where needed
+    if (dataToUse && dataToUse.length > 0 && !error) {
+      dataToUse = dataToUse.map(sanityItem => {
+        // Find matching fallback item
+        const fallbackItem = fallbackGalleryData.find(fb => 
+          fb.propertyName === sanityItem.propertyName && 
+          fb.roomType === sanityItem.roomType
+        );
+        
+        // If Sanity doesn't have images but fallback does, use fallback images
+        return {
+          ...sanityItem,
+          beforeImageUrl: sanityItem.beforeImageUrl || fallbackItem?.beforeImageUrl || null,
+          afterImageUrl: sanityItem.afterImageUrl || fallbackItem?.afterImageUrl || null
+        };
+      });
+    } else {
+      // Use fallback data if Sanity is empty or errored
       dataToUse = title === "All Projects" ? fallbackGalleryData : 
                   title === "Residential Projects" ? fallbackGalleryData.filter(item => item.category === 'Residential') :
                   title === "Commercial Projects" ? fallbackGalleryData.filter(item => item.category === 'Commercial') :
