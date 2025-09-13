@@ -5,6 +5,7 @@ import SEO from "@/components/SEO";
 import { Lightbox } from "@/components/ui/lightbox";
 import { useGalleryItems } from "@/hooks/useSanity";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ImageCarousel, FullscreenCarousel } from "@/components/ui/image-carousel";
 
 // Import all the original images
 import rosedaleExteriorBeforeNew from "@/assets/gallery-rosedale-exterior-before-new.jpg";
@@ -39,6 +40,9 @@ const Gallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImages, setCurrentImages] = useState<Array<{src: string; alt: string; title: string}>>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [fullscreenOpen, setFullscreenOpen] = useState(false);
+  const [fullscreenImages, setFullscreenImages] = useState<Array<{src: string; alt: string; title: string}>>([]);
+  const [fullscreenIndex, setFullscreenIndex] = useState(0);
 
   // Fetch gallery data from Sanity
   const { data: allGalleryItems, isLoading, error } = useGalleryItems();
@@ -179,6 +183,12 @@ const Gallery = () => {
     setLightboxOpen(true);
   };
 
+  const openFullscreen = (images: Array<{src: string; alt: string; title: string}>, index: number) => {
+    setFullscreenImages(images);
+    setFullscreenIndex(index);
+    setFullscreenOpen(true);
+  };
+
   // Helper function to create before/after image pairs from Sanity data
   const createImagePairsFromGalleryItems = (items: Array<any>) => {
     return items?.map(item => ({
@@ -237,29 +247,48 @@ const Gallery = () => {
           fb.roomType === sanityItem.roomType
         );
         
-        // If Sanity doesn't have images but fallback does, use fallback images
+        // Merge images - use array if available, otherwise single image, otherwise fallback
+        const beforeImages = sanityItem.beforeImageUrls?.filter(Boolean) || 
+                           (sanityItem.beforeImageUrl ? [sanityItem.beforeImageUrl] : null) ||
+                           (fallbackItem?.beforeImageUrl ? [fallbackItem.beforeImageUrl] : []);
+        
+        const afterImages = sanityItem.afterImageUrls?.filter(Boolean) || 
+                          (sanityItem.afterImageUrl ? [sanityItem.afterImageUrl] : null) ||
+                          (fallbackItem?.afterImageUrl ? [fallbackItem.afterImageUrl] : []);
+
         return {
           ...sanityItem,
-          beforeImageUrl: sanityItem.beforeImageUrl || fallbackItem?.beforeImageUrl || null,
-          afterImageUrl: sanityItem.afterImageUrl || fallbackItem?.afterImageUrl || null
+          beforeImageUrls: beforeImages,
+          afterImageUrls: afterImages,
+          // Keep legacy fields for compatibility
+          beforeImageUrl: beforeImages[0] || null,
+          afterImageUrl: afterImages[0] || null
         };
       });
     } else {
       // Use fallback data if Sanity is empty or errored
-      dataToUse = title === "All Projects" ? fallbackGalleryData : 
-                  title === "Residential Projects" ? fallbackGalleryData.filter(item => item.category === 'Residential') :
-                  title === "Commercial Projects" ? fallbackGalleryData.filter(item => item.category === 'Commercial') :
-                  title === "New Construction Projects" ? fallbackGalleryData.filter(item => item.category === 'New Construction') :
-                  fallbackGalleryData;
+      let filteredFallback = title === "All Projects" ? fallbackGalleryData : 
+                        title === "Residential Projects" ? fallbackGalleryData.filter(item => item.category === 'Residential') :
+                        title === "Commercial Projects" ? fallbackGalleryData.filter(item => item.category === 'Commercial') :
+                        title === "New Construction Projects" ? fallbackGalleryData.filter(item => item.category === 'New Construction') :
+                        fallbackGalleryData;
+      
+      // Convert fallback data to array format for consistency
+      dataToUse = filteredFallback.map(item => ({
+        ...item,
+        beforeImageUrls: item.beforeImageUrl ? [item.beforeImageUrl] : [],
+        afterImageUrls: item.afterImageUrl ? [item.afterImageUrl] : []
+      }));
     }
     
     // Filter out items that don't have both before AND after images
-    dataToUse = dataToUse.filter(item => 
-      item.beforeImageUrl && 
-      item.afterImageUrl && 
-      item.beforeImageUrl !== "/placeholder.svg" && 
-      item.afterImageUrl !== "/placeholder.svg"
-    );
+    dataToUse = dataToUse.filter(item => {
+      const hasBeforeImages = (item.beforeImageUrls && item.beforeImageUrls.length > 0) || 
+                             (item.beforeImageUrl && item.beforeImageUrl !== "/placeholder.svg");
+      const hasAfterImages = (item.afterImageUrls && item.afterImageUrls.length > 0) || 
+                            (item.afterImageUrl && item.afterImageUrl !== "/placeholder.svg");
+      return hasBeforeImages && hasAfterImages;
+    });
 
     const properties = groupItemsByProperty(dataToUse || []);
 
@@ -291,44 +320,49 @@ const Gallery = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {propertyItems.map((item, itemIndex) => {
-                const beforeImages = [{
-                  src: item.beforeImageUrl || "/placeholder.svg",
-                  alt: `${item.propertyName} ${item.roomType} - Before`,
-                  title: `${item.propertyName} - ${item.roomType} (Before)`
-                }];
-                const afterImages = [{
-                  src: item.afterImageUrl || "/placeholder.svg",
-                  alt: `${item.propertyName} ${item.roomType} - After`, 
-                  title: `${item.propertyName} - ${item.roomType} (After)`
-                }];
+                const beforeImages = (item.beforeImageUrls || [item.beforeImageUrl].filter(Boolean)).map((src, index) => ({
+                  src: src || "/placeholder.svg",
+                  alt: `${item.propertyName} ${item.roomType} - Before ${index + 1}`,
+                  title: `${item.propertyName} - ${item.roomType} (Before ${index + 1})`
+                }));
+                
+                const afterImages = (item.afterImageUrls || [item.afterImageUrl].filter(Boolean)).map((src, index) => ({
+                  src: src || "/placeholder.svg",
+                  alt: `${item.propertyName} ${item.roomType} - After ${index + 1}`,
+                  title: `${item.propertyName} - ${item.roomType} (After ${index + 1})`
+                }));
+
+                const allImages = [...beforeImages, ...afterImages];
 
                 return (
                   <div key={item._id} className="space-y-4">
                     <h4 className="text-lg font-medium text-center">{item.roomType}</h4>
                     
                     <div className="grid grid-cols-2 gap-4">
-                      {/* Before Image */}
+                      {/* Before Images Carousel */}
                       <div className="space-y-2">
-                        <img
-                          src={item.beforeImageUrl || "/placeholder.svg"}
+                        <ImageCarousel
+                          images={item.beforeImageUrls || [item.beforeImageUrl].filter(Boolean)}
                           alt={`${item.propertyName} ${item.roomType} - Before`}
-                          className="w-full h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
-                          onClick={() => openLightbox(beforeImages, 0)}
-                          loading="lazy"
+                          className="h-48"
+                          onImageClick={(index) => openFullscreen(beforeImages, index)}
                         />
-                        <p className="text-sm text-muted-foreground text-center">Before</p>
+                        <p className="text-sm text-muted-foreground text-center">
+                          Before {beforeImages.length > 1 ? `(${beforeImages.length} photos)` : ''}
+                        </p>
                       </div>
 
-                      {/* After Image */}
+                      {/* After Images Carousel */}
                       <div className="space-y-2">
-                        <img
-                          src={item.afterImageUrl || "/placeholder.svg"}
+                        <ImageCarousel
+                          images={item.afterImageUrls || [item.afterImageUrl].filter(Boolean)}
                           alt={`${item.propertyName} ${item.roomType} - After`}
-                          className="w-full h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
-                          onClick={() => openLightbox(afterImages, 0)}
-                          loading="lazy"
+                          className="h-48"
+                          onImageClick={(index) => openFullscreen(afterImages, index)}
                         />
-                        <p className="text-sm text-muted-foreground text-center">After</p>
+                        <p className="text-sm text-muted-foreground text-center">
+                          After {afterImages.length > 1 ? `(${afterImages.length} photos)` : ''}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -396,6 +430,13 @@ const Gallery = () => {
         onClose={() => setLightboxOpen(false)}
         currentIndex={currentImageIndex}
         onIndexChange={setCurrentImageIndex}
+      />
+
+      <FullscreenCarousel
+        images={fullscreenImages}
+        initialIndex={fullscreenIndex}
+        isOpen={fullscreenOpen}
+        onClose={() => setFullscreenOpen(false)}
       />
 
       <Footer />

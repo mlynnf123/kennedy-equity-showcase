@@ -46,6 +46,11 @@ export const queries = {
     _id,
     propertyName,
     roomType,
+    beforeImages,
+    "beforeImageUrls": beforeImages[].asset->url,
+    afterImages,
+    "afterImageUrls": afterImages[].asset->url,
+    // Legacy fields for backward compatibility
     beforeImage,
     "beforeImageUrl": beforeImage.asset->url,
     afterImage,
@@ -60,6 +65,11 @@ export const queries = {
     _id,
     propertyName,
     roomType,
+    beforeImages,
+    "beforeImageUrls": beforeImages[].asset->url,
+    afterImages,
+    "afterImageUrls": afterImages[].asset->url,
+    // Legacy fields for backward compatibility
     beforeImage,
     "beforeImageUrl": beforeImage.asset->url,
     afterImage,
@@ -107,8 +117,16 @@ export interface GalleryItem {
   _id: string;
   propertyName: string;
   roomType?: string;
-  beforeImage: string;
-  afterImage: string;
+  // New array fields
+  beforeImages?: string[];
+  beforeImageUrls?: string[];
+  afterImages?: string[];
+  afterImageUrls?: string[];
+  // Legacy single image fields
+  beforeImage?: string;
+  beforeImageUrl?: string;
+  afterImage?: string;
+  afterImageUrl?: string;
   description?: string;
   category?: 'Residential' | 'Commercial' | 'New Construction';
   yearCompleted?: string;

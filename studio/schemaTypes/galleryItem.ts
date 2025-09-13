@@ -17,22 +17,47 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'beforeImages',
+      title: 'Before Images',
+      type: 'array',
+      of: [{
+        type: 'image',
+        options: {
+          hotspot: true,
+        },
+      }],
+      validation: (Rule) => Rule.min(1).error('At least one before image is required'),
+    }),
+    defineField({
+      name: 'afterImages',
+      title: 'After Images',
+      type: 'array',
+      of: [{
+        type: 'image',
+        options: {
+          hotspot: true,
+        },
+      }],
+      validation: (Rule) => Rule.min(1).error('At least one after image is required'),
+    }),
+    // Keep old fields for backward compatibility
+    defineField({
       name: 'beforeImage',
-      title: 'Before Image',
+      title: 'Before Image (Legacy)',
       type: 'image',
+      hidden: true,
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'afterImage',
-      title: 'After Image',
+      title: 'After Image (Legacy)',
       type: 'image',
+      hidden: true,
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
