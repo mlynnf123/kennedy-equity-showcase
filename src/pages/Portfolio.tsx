@@ -66,7 +66,7 @@ const Portfolio = () => {
                 <div key={property._id} className="relative p-6 rounded-lg border border-border bg-card">
                   <div className="md:flex items-start gap-6">
                     <img 
-                      src={property.featuredImage || residentialImg} 
+                      src={property.featuredImageUrl || residentialImg} 
                       alt={`${property.name} - ${property.description}`} 
                       className="rounded-md w-full md:w-1/2 object-cover" 
                     />
@@ -143,7 +143,7 @@ const Portfolio = () => {
                     return (
                       <PortfolioCard
                         key={property._id}
-                        image={property.featuredImage || residentialImg}
+                        image={property.featuredImageUrl || residentialImg}
                         name={property.name}
                         description={property.description || ""}
                         location={property.location || ""}
@@ -172,7 +172,7 @@ const Portfolio = () => {
                   {constructionProperties?.map((property) => (
                     <PortfolioCard
                       key={property._id}
-                      image={property.featuredImage || residentialImg}
+                      image={property.featuredImageUrl || residentialImg}
                       name={property.name}
                       description={property.description || ""}
                       location={property.location || ""}

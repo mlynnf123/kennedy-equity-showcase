@@ -27,12 +27,12 @@ const Gallery = () => {
   const createImagePairsFromGalleryItems = (items: Array<any>) => {
     return items?.map(item => ({
       before: {
-        src: item.beforeImage || "/placeholder.svg",
+        src: item.beforeImageUrl || "/kennedy-equity-showcase/placeholder.svg",
         alt: `${item.propertyName} ${item.roomType} - Before`,
         title: `${item.propertyName} - ${item.roomType} (Before)`
       },
       after: {
-        src: item.afterImage || "/placeholder.svg", 
+        src: item.afterImageUrl || "/kennedy-equity-showcase/placeholder.svg", 
         alt: `${item.propertyName} ${item.roomType} - After`,
         title: `${item.propertyName} - ${item.roomType} (After)`
       },
@@ -108,12 +108,12 @@ const Gallery = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {propertyItems.map((item, itemIndex) => {
                 const beforeImages = [{
-                  src: item.beforeImage || "/placeholder.svg",
+                  src: item.beforeImageUrl || "/kennedy-equity-showcase/placeholder.svg",
                   alt: `${item.propertyName} ${item.roomType} - Before`,
                   title: `${item.propertyName} - ${item.roomType} (Before)`
                 }];
                 const afterImages = [{
-                  src: item.afterImage || "/placeholder.svg",
+                  src: item.afterImageUrl || "/kennedy-equity-showcase/placeholder.svg",
                   alt: `${item.propertyName} ${item.roomType} - After`, 
                   title: `${item.propertyName} - ${item.roomType} (After)`
                 }];
@@ -126,7 +126,7 @@ const Gallery = () => {
                       {/* Before Image */}
                       <div className="space-y-2">
                         <img
-                          src={item.beforeImage || "/placeholder.svg"}
+                          src={item.beforeImageUrl || "/kennedy-equity-showcase/placeholder.svg"}
                           alt={`${item.propertyName} ${item.roomType} - Before`}
                           className="w-full h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
                           onClick={() => openLightbox(beforeImages, 0)}
@@ -138,7 +138,7 @@ const Gallery = () => {
                       {/* After Image */}
                       <div className="space-y-2">
                         <img
-                          src={item.afterImage || "/placeholder.svg"}
+                          src={item.afterImageUrl || "/kennedy-equity-showcase/placeholder.svg"}
                           alt={`${item.propertyName} ${item.roomType} - After`}
                           className="w-full h-48 object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
                           onClick={() => openLightbox(afterImages, 0)}
