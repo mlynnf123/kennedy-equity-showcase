@@ -420,11 +420,11 @@ const Gallery = () => {
           </p>
 
           <Tabs defaultValue="all" className="mt-8">
-            <TabsList className="grid w-full grid-cols-4 max-w-lg">
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="residential">Residential</TabsTrigger>
-              <TabsTrigger value="commercial">Commercial</TabsTrigger>
-              <TabsTrigger value="construction">New Construction</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 max-w-4xl mx-auto gap-1 h-auto p-1">
+              <TabsTrigger value="all" className="px-3 py-2 text-sm font-medium whitespace-nowrap">All</TabsTrigger>
+              <TabsTrigger value="residential" className="px-3 py-2 text-sm font-medium whitespace-nowrap">Residential</TabsTrigger>
+              <TabsTrigger value="commercial" className="px-3 py-2 text-sm font-medium whitespace-nowrap">Commercial</TabsTrigger>
+              <TabsTrigger value="construction" className="px-3 py-2 text-sm font-medium whitespace-nowrap">New Construction</TabsTrigger>
             </TabsList>
 
             <TabsContent value="all" className="mt-8">
