@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
 import SEO from "@/components/SEO";
@@ -49,6 +49,13 @@ const Gallery = () => {
   const { data: residentialItems } = useGalleryItems("Residential");
   const { data: commercialItems } = useGalleryItems("Commercial");
   const { data: newConstructionItems } = useGalleryItems("New Construction");
+  
+  // Log when data is fetched
+  React.useEffect(() => {
+    console.log('Gallery data updated at:', new Date().toISOString());
+    console.log('All items count:', allGalleryItems?.length || 0);
+    console.log('Has error:', !!error);
+  }, [allGalleryItems, error]);
 
   // Define original gallery data as fallback
   const fallbackGalleryData = [
@@ -240,15 +247,9 @@ const Gallery = () => {
     
     // If we have Sanity data, merge it with fallback images where needed
     if (dataToUse && dataToUse.length > 0 && !error) {
+      console.log(`Found ${dataToUse.length} items from Sanity for category: ${title}`);
+      
       dataToUse = dataToUse.map(sanityItem => {
-        // Debug logging
-        console.log('Sanity item:', sanityItem.propertyName, sanityItem.roomType, {
-          beforeImageUrls: sanityItem.beforeImageUrls,
-          afterImageUrls: sanityItem.afterImageUrls,
-          beforeImageUrl: sanityItem.beforeImageUrl,
-          afterImageUrl: sanityItem.afterImageUrl
-        });
-        
         // Find matching fallback item
         const fallbackItem = fallbackGalleryData.find(fb => 
           fb.propertyName === sanityItem.propertyName && 
@@ -264,7 +265,13 @@ const Gallery = () => {
                           (sanityItem.afterImageUrl ? [sanityItem.afterImageUrl] : null) ||
                           (fallbackItem?.afterImageUrl ? [fallbackItem.afterImageUrl] : []);
 
-        console.log('Merged result:', { beforeImages, afterImages });
+        // Log if we have new/updated content from Sanity
+        if (sanityItem.beforeImageUrls?.length > 0 || sanityItem.afterImageUrls?.length > 0) {
+          console.log(`Sanity images found for ${sanityItem.propertyName} - ${sanityItem.roomType}:`, {
+            beforeCount: beforeImages.length,
+            afterCount: afterImages.length
+          });
+        }
 
         return {
           ...sanityItem,
@@ -289,6 +296,9 @@ const Gallery = () => {
       });
     } else {
       // Use fallback data if Sanity is empty or errored
+      console.log(`Using fallback data for ${title}. Error:`, error);
+      console.log('Items received:', items);
+      
       let filteredFallback = title === "All Projects" ? fallbackGalleryData : 
                         title === "Residential Projects" ? fallbackGalleryData.filter(item => item.category === 'Residential') :
                         title === "Commercial Projects" ? fallbackGalleryData.filter(item => item.category === 'Commercial') :
