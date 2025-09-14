@@ -275,6 +275,18 @@ const Gallery = () => {
           afterImageUrl: afterImages[0] || null
         };
       });
+
+      // Remove duplicates based on propertyName + roomType
+      const seen = new Set();
+      dataToUse = dataToUse.filter(item => {
+        const key = `${item.propertyName}-${item.roomType}`;
+        if (seen.has(key)) {
+          console.log('Removing duplicate:', item.propertyName, item.roomType);
+          return false;
+        }
+        seen.add(key);
+        return true;
+      });
     } else {
       // Use fallback data if Sanity is empty or errored
       let filteredFallback = title === "All Projects" ? fallbackGalleryData : 
