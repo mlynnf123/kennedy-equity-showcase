@@ -313,13 +313,13 @@ const Gallery = () => {
       }));
     }
     
-    // Filter out items that don't have both before AND after images
+    // Filter out items that don't have at least ONE image (before OR after)
     dataToUse = dataToUse.filter(item => {
       const hasBeforeImages = (item.beforeImageUrls && item.beforeImageUrls.length > 0) || 
                              (item.beforeImageUrl && item.beforeImageUrl !== "/placeholder.svg");
       const hasAfterImages = (item.afterImageUrls && item.afterImageUrls.length > 0) || 
                             (item.afterImageUrl && item.afterImageUrl !== "/placeholder.svg");
-      return hasBeforeImages && hasAfterImages;
+      return hasBeforeImages || hasAfterImages; // Changed from && to ||
     });
 
     const properties = groupItemsByProperty(dataToUse || []);
@@ -370,32 +370,43 @@ const Gallery = () => {
                   <div key={item._id} className="space-y-4">
                     <h4 className="text-lg font-medium text-center">{item.roomType}</h4>
                     
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {/* Before Images Carousel */}
-                      <div className="space-y-2">
-                        <ImageCarousel
-                          images={item.beforeImageUrls || [item.beforeImageUrl].filter(Boolean)}
-                          alt={`${item.propertyName} ${item.roomType} - Before`}
-                          className="h-48"
-                          onImageClick={(index) => openFullscreen(beforeImages, index)}
-                        />
-                        <p className="text-sm text-muted-foreground text-center">
-                          Before {beforeImages.length > 1 ? `(${beforeImages.length} photos)` : ''}
-                        </p>
-                      </div>
+                      {beforeImages.length > 0 && (
+                        <div className="space-y-2">
+                          <ImageCarousel
+                            images={item.beforeImageUrls || [item.beforeImageUrl].filter(Boolean)}
+                            alt={`${item.propertyName} ${item.roomType} - Before`}
+                            className="h-48"
+                            onImageClick={(index) => openFullscreen(beforeImages, index)}
+                          />
+                          <p className="text-sm text-muted-foreground text-center">
+                            Before {beforeImages.length > 1 ? `(${beforeImages.length} photos)` : ''}
+                          </p>
+                        </div>
+                      )}
 
                       {/* After Images Carousel */}
-                      <div className="space-y-2">
-                        <ImageCarousel
-                          images={item.afterImageUrls || [item.afterImageUrl].filter(Boolean)}
-                          alt={`${item.propertyName} ${item.roomType} - After`}
-                          className="h-48"
-                          onImageClick={(index) => openFullscreen(afterImages, index)}
-                        />
-                        <p className="text-sm text-muted-foreground text-center">
-                          After {afterImages.length > 1 ? `(${afterImages.length} photos)` : ''}
-                        </p>
-                      </div>
+                      {afterImages.length > 0 && (
+                        <div className="space-y-2">
+                          <ImageCarousel
+                            images={item.afterImageUrls || [item.afterImageUrl].filter(Boolean)}
+                            alt={`${item.propertyName} ${item.roomType} - After`}
+                            className="h-48"
+                            onImageClick={(index) => openFullscreen(afterImages, index)}
+                          />
+                          <p className="text-sm text-muted-foreground text-center">
+                            After {afterImages.length > 1 ? `(${afterImages.length} photos)` : ''}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Show placeholder if neither before nor after images exist */}
+                      {beforeImages.length === 0 && afterImages.length === 0 && (
+                        <div className="col-span-full flex items-center justify-center h-48 bg-muted rounded-lg">
+                          <p className="text-muted-foreground">Images coming soon</p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
