@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-interface PortfolioCardProps {
+interface ProjectCardProps {
   image: string;
   name: string;
   description: string;
@@ -9,7 +9,7 @@ interface PortfolioCardProps {
   action?: React.ReactNode;
 }
 
-export const PortfolioCard = ({ image, name, description, location, sector, action }: PortfolioCardProps) => {
+export const ProjectCard = ({ image, name, description, location, sector, action }: ProjectCardProps) => {
   return (
     <article className={cn("rounded-lg overflow-hidden border border-border bg-card shadow-sm hover:shadow-md transition-shadow")}> 
       <div className="aspect-[16/10] overflow-hidden">
@@ -28,4 +28,4 @@ export const PortfolioCard = ({ image, name, description, location, sector, acti
   );
 };
 
-export default PortfolioCard;
+export default ProjectCard;

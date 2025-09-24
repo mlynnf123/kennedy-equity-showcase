@@ -16,7 +16,7 @@ export const Footer = () => {
           <ul className="space-y-2 text-sm">
             <li><Link className="hover:underline" to="/about">About</Link></li>
             <li><Link className="hover:underline" to="/gallery">Gallery</Link></li>
-            <li><Link className="hover:underline" to="/portfolio">Portfolio</Link></li>
+            <li><Link className="hover:underline" to="/projects">Projects</Link></li>
             <li><Link className="hover:underline" to="/contact">Contact</Link></li>
           </ul>
         </div>
@@ -25,8 +25,7 @@ export const Footer = () => {
           <ul className="space-y-2 text-sm">
             <li><Link className="hover:underline" to="/gallery">Flip Homes</Link></li>
             <li><Link className="hover:underline" to="/new-construction">New Construction</Link></li>
-            <li><Link className="hover:underline" to="/portfolio?tab=pmi-austin">PMI Austin</Link></li>
-            <li><Link className="hover:underline" to="/portfolio?tab=residential">Single & Multi Family</Link></li>
+            <li><Link className="hover:underline" to="/projects">All Projects</Link></li>
           </ul>
         </div>
         <div>

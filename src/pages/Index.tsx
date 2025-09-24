@@ -34,7 +34,7 @@ const Index = () => {
           <div>
             <h2 className="text-2xl font-normal">What We Do</h2>
             <p className="text-muted-foreground mt-3">
-              We invest in and manage a diverse portfolio spanning residential, commercial, and association
+              We invest in and manage a diverse collection of projects spanning residential, commercial, and association
               properties. Our disciplined approach focuses on long-term value creation, prudent risk management,
               and operational excellence.
             </p>

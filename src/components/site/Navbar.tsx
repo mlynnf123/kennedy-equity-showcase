@@ -15,12 +15,12 @@ const navItems = [{
   label: "Contact"
 }];
 
-const portfolioItems = [{
-  to: "/portfolio?tab=pmi-austin",
-  label: "PMI Austin"
+const projectItems = [{
+  to: "/projects",
+  label: "All Projects"
 }, {
-  to: "/portfolio?tab=residential", 
-  label: "Single & Multi Family"
+  to: "/gallery",
+  label: "Gallery"
 }, {
   to: "/new-construction",
   label: "New Construction"
@@ -35,7 +35,7 @@ const galleryItems = [{
 }];
 export const Navbar = () => {
   const { pathname } = useLocation();
-  const [portfolioOpen, setPortfolioOpen] = useState(false);
+  const [projectsOpen, setProjectsOpen] = useState(false);
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
@@ -67,15 +67,15 @@ export const Navbar = () => {
             </DropdownMenuContent>
           </DropdownMenu>
           
-          <DropdownMenu open={portfolioOpen} onOpenChange={setPortfolioOpen}>
+          <DropdownMenu open={projectsOpen} onOpenChange={setProjectsOpen}>
             <DropdownMenuTrigger asChild>
-              <button className={`flex items-center gap-1 text-sm transition-colors hover:text-foreground/80 ${pathname === "/portfolio" ? "text-foreground" : "text-foreground/70"}`}>
-                Portfolio
-                <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${portfolioOpen ? 'rotate-180' : ''}`} />
+              <button className={`flex items-center gap-1 text-sm transition-colors hover:text-foreground/80 ${pathname === "/projects" ? "text-foreground" : "text-foreground/70"}`}>
+                Projects
+                <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${projectsOpen ? 'rotate-180' : ''}`} />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56 bg-background border border-border shadow-lg z-50">
-              {portfolioItems.map(item => (
+              {projectItems.map(item => (
                 <DropdownMenuItem key={item.to} asChild>
                   <Link to={item.to} className="w-full text-sm hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                     {item.label}
@@ -128,9 +128,9 @@ export const Navbar = () => {
                 </div>
                 
                 <div className="flex flex-col gap-3">
-                  <span className="text-lg font-medium text-foreground">Portfolio</span>
+                  <span className="text-lg font-medium text-foreground">Projects</span>
                   <div className="flex flex-col gap-3 ml-4">
-                    {portfolioItems.map(item => (
+                    {projectItems.map(item => (
                       <Link 
                         key={item.to} 
                         to={item.to} 

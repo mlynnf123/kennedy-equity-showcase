@@ -42,7 +42,7 @@ export const Hero = () => {
                 developing, and managing exceptional assets across key markets.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link to="/portfolio"><Button variant="cta" size="lg" className="rounded-[2%]">Explore Investments</Button></Link>
+                <Link to="/projects"><Button variant="cta" size="lg" className="rounded-[2%]">Explore Projects</Button></Link>
                 <Link to="/contact"><Button variant="outline" size="lg" className="rounded-[2%]">Contact Us</Button></Link>
               </div>
             </div>
