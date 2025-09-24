@@ -200,7 +200,6 @@ const Projects = () => {
                 name={project.name}
                 description={project.description || ""}
                 location={project.location || ""}
-                sector={project.propertyType || project.sector || ""}
                 action={project.action}
               />
             ))}

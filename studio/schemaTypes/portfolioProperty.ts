@@ -23,18 +23,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'sector',
-      title: 'Sector',
-      type: 'string',
-      options: {
-        list: [
-          {title: 'PMI Austin', value: 'PMI Austin'},
-          {title: 'Single & Multi Family', value: 'Single & Multi Family'},
-          {title: 'Construction', value: 'Construction'},
-        ],
-      },
-    }),
-    defineField({
       name: 'featuredImage',
       title: 'Featured Image',
       type: 'image',

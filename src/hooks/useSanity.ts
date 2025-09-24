@@ -3,10 +3,10 @@ import { sanityApi, PortfolioProperty, GalleryItem, CompanyStats, TeamMember } f
 
 // Custom hooks for fetching Sanity data with React Query
 
-export const usePortfolioProperties = (sector?: string) => {
+export const usePortfolioProperties = () => {
   return useQuery({
-    queryKey: ['portfolioProperties', sector],
-    queryFn: () => sanityApi.getPortfolioProperties(sector),
+    queryKey: ['portfolioProperties'],
+    queryFn: () => sanityApi.getPortfolioProperties(),
     staleTime: 0, // No caching - always fetch fresh data
   });
 };
@@ -35,10 +35,10 @@ export const useTeamMembers = () => {
   });
 };
 
-export const useGalleryProperties = (category?: string) => {
+export const useGalleryProperties = () => {
   return useQuery({
-    queryKey: ['galleryProperties', category],
-    queryFn: () => sanityApi.getGalleryProperties(category),
+    queryKey: ['galleryProperties'],
+    queryFn: () => sanityApi.getGalleryProperties(),
     staleTime: 0, // No caching - always fetch fresh data
   });
 };

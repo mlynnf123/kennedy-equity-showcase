@@ -17,22 +17,6 @@ export const queries = {
     name,
     description,
     location,
-    sector,
-    featuredImage,
-    "featuredImageUrl": featuredImage.asset->url,
-    "additionalImages": additionalImages[].asset->url,
-    propertyType,
-    investmentAmount,
-    status
-  }`,
-
-  // Get portfolio properties by sector
-  portfolioPropertiesBySector: (sector: string) => `*[_type == "portfolioProperty" && sector == "${sector}"] | order(_createdAt desc) {
-    _id,
-    name,
-    description,
-    location,
-    sector,
     featuredImage,
     "featuredImageUrl": featuredImage.asset->url,
     "additionalImages": additionalImages[].asset->url,
@@ -105,20 +89,6 @@ export const queries = {
     propertyAddress,
     "imageUrls": images[].asset->url,
     description,
-    category,
-    yearCompleted,
-    featured,
-    displayOrder
-  }`,
-
-  // Get gallery properties by category (new structure)
-  galleryPropertiesByCategory: (category: string) => `*[_type == "galleryProperty" && category == "${category}"] | order(featured desc, displayOrder asc, _createdAt desc) {
-    _id,
-    _createdAt,
-    propertyAddress,
-    "imageUrls": images[].asset->url,
-    description,
-    category,
     yearCompleted,
     featured,
     displayOrder
@@ -131,7 +101,6 @@ export interface PortfolioProperty {
   name: string;
   description?: string;
   location?: string;
-  sector: 'PMI Austin' | 'Single & Multi Family' | 'Construction';
   featuredImage: string;
   additionalImages?: string[];
   propertyType?: string;
@@ -181,7 +150,6 @@ export interface GalleryProperty {
   propertyAddress: string;
   imageUrls: string[];
   description?: string;
-  category?: 'Residential' | 'Commercial' | 'New Construction';
   yearCompleted?: string;
   featured?: boolean;
   displayOrder?: number;
@@ -190,10 +158,9 @@ export interface GalleryProperty {
 // API functions
 export const sanityApi = {
   // Get all portfolio properties
-  async getPortfolioProperties(sector?: string): Promise<PortfolioProperty[]> {
+  async getPortfolioProperties(): Promise<PortfolioProperty[]> {
     try {
-      const query = sector ? queries.portfolioPropertiesBySector(sector) : queries.portfolioProperties;
-      return await client.fetch(query);
+      return await client.fetch(queries.portfolioProperties);
     } catch (error) {
       console.error('Error fetching portfolio properties:', error);
       return [];
@@ -232,10 +199,9 @@ export const sanityApi = {
   },
 
   // Get gallery properties (new structure)
-  async getGalleryProperties(category?: string): Promise<GalleryProperty[]> {
+  async getGalleryProperties(): Promise<GalleryProperty[]> {
     try {
-      const query = category ? queries.galleryPropertiesByCategory(category) : queries.galleryProperties;
-      return await client.fetch(query);
+      return await client.fetch(queries.galleryProperties);
     } catch (error) {
       console.error('Error fetching gallery properties:', error);
       return [];

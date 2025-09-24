@@ -30,19 +30,6 @@ export default defineType({
       rows: 4,
     }),
     defineField({
-      name: 'category',
-      title: 'Category',
-      type: 'string',
-      options: {
-        list: [
-          {title: 'Residential', value: 'Residential'},
-          {title: 'Commercial', value: 'Commercial'},
-          {title: 'New Construction', value: 'New Construction'},
-        ],
-      },
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: 'yearCompleted',
       title: 'Year Completed',
       type: 'string',
@@ -65,7 +52,7 @@ export default defineType({
   preview: {
     select: {
       title: 'propertyAddress',
-      subtitle: 'category',
+      subtitle: 'yearCompleted',
       media: 'images.0',
     },
   },
