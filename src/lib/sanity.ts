@@ -103,11 +103,7 @@ export const queries = {
     _id,
     _createdAt,
     propertyAddress,
-    "imageUrls": images[]{
-      "url": asset->url,
-      caption,
-      imageType
-    },
+    "imageUrls": images[].asset->url,
     description,
     category,
     yearCompleted,
@@ -120,11 +116,7 @@ export const queries = {
     _id,
     _createdAt,
     propertyAddress,
-    "imageUrls": images[]{
-      "url": asset->url,
-      caption,
-      imageType
-    },
+    "imageUrls": images[].asset->url,
     description,
     category,
     yearCompleted,
@@ -187,11 +179,7 @@ export interface GalleryProperty {
   _id: string;
   _createdAt: string;
   propertyAddress: string;
-  imageUrls: Array<{
-    url: string;
-    caption?: string;
-    imageType?: 'before' | 'after' | 'progress' | 'detail';
-  }>;
+  imageUrls: string[];
   description?: string;
   category?: 'Residential' | 'Commercial' | 'New Construction';
   yearCompleted?: string;

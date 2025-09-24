@@ -17,28 +17,6 @@ export default defineType({
       type: 'array',
       of: [{
         type: 'image',
-        fields: [
-          {
-            name: 'caption',
-            type: 'string',
-            title: 'Caption',
-            description: 'Optional caption for this image (e.g., "Kitchen - Before", "Living Room - After")',
-          },
-          {
-            name: 'imageType',
-            type: 'string',
-            title: 'Image Type',
-            options: {
-              list: [
-                {title: 'Before', value: 'before'},
-                {title: 'After', value: 'after'},
-                {title: 'Progress', value: 'progress'},
-                {title: 'Detail', value: 'detail'},
-              ],
-            },
-            initialValue: 'after',
-          }
-        ],
         options: {
           hotspot: true,
         },

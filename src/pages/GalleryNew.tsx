@@ -28,10 +28,10 @@ const GalleryNew = () => {
 
   const renderPropertyCard = (property: any) => {
     const images = property.imageUrls || [];
-    const imageObjects = images.map((img: any, idx: number) => ({
-      src: img.url || img,
-      alt: `${property.propertyAddress} - ${img.caption || `Image ${idx + 1}`}`,
-      title: img.caption || `${property.propertyAddress} - Image ${idx + 1}`
+    const imageObjects = images.map((img: string, idx: number) => ({
+      src: img,
+      alt: `${property.propertyAddress} - Image ${idx + 1}`,
+      title: `${property.propertyAddress} - Image ${idx + 1}`
     }));
 
     return (
@@ -40,28 +40,15 @@ const GalleryNew = () => {
           {images.length > 0 ? (
             <Carousel className="w-full">
               <CarouselContent>
-                {images.map((img: any, index: number) => (
+                {images.map((imgUrl: string, index: number) => (
                   <CarouselItem key={index}>
                     <div className="relative">
                       <img
-                        src={img.url || img}
-                        alt={`${property.propertyAddress} - ${img.caption || `Image ${index + 1}`}`}
+                        src={imgUrl}
+                        alt={`${property.propertyAddress} - Image ${index + 1}`}
                         className="w-full h-64 md:h-96 object-cover cursor-pointer"
                         onClick={() => openFullscreen(imageObjects, index)}
                       />
-                      {img.imageType && (
-                        <Badge 
-                          className="absolute top-2 right-2"
-                          variant={img.imageType === 'before' ? 'secondary' : 'default'}
-                        >
-                          {img.imageType.charAt(0).toUpperCase() + img.imageType.slice(1)}
-                        </Badge>
-                      )}
-                      {img.caption && (
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                          <p className="text-white text-sm">{img.caption}</p>
-                        </div>
-                      )}
                     </div>
                   </CarouselItem>
                 ))}
@@ -97,7 +84,7 @@ const GalleryNew = () => {
     );
   };
 
-  const renderGallerySection = (properties: Array<any>, title: string) => {
+  const renderGallerySection = (properties: Array<any>) => {
     if (isLoading) {
       return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -173,19 +160,19 @@ const GalleryNew = () => {
             </TabsList>
 
             <TabsContent value="all" className="mt-8">
-              {renderGallerySection(allProperties || [], "All Properties")}
+              {renderGallerySection(allProperties || [])}
             </TabsContent>
 
             <TabsContent value="residential" className="mt-8">
-              {renderGallerySection(residentialProperties || [], "Residential Properties")}
+              {renderGallerySection(residentialProperties || [])}
             </TabsContent>
 
             <TabsContent value="commercial" className="mt-8">
-              {renderGallerySection(commercialProperties || [], "Commercial Properties")}
+              {renderGallerySection(commercialProperties || [])}
             </TabsContent>
 
             <TabsContent value="construction" className="mt-8">
-              {renderGallerySection(newConstructionProperties || [], "New Construction Properties")}
+              {renderGallerySection(newConstructionProperties || [])}
             </TabsContent>
           </Tabs>
         </section>
