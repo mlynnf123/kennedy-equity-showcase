@@ -96,6 +96,40 @@ export const queries = {
     bio,
     "photo": photo.asset->url,
     displayOrder
+  }`,
+
+  // Get gallery properties (new structure)
+  galleryProperties: `*[_type == "galleryProperty"] | order(featured desc, displayOrder asc, _createdAt desc) {
+    _id,
+    _createdAt,
+    propertyAddress,
+    "imageUrls": images[]{
+      "url": asset->url,
+      caption,
+      imageType
+    },
+    description,
+    category,
+    yearCompleted,
+    featured,
+    displayOrder
+  }`,
+
+  // Get gallery properties by category (new structure)
+  galleryPropertiesByCategory: (category: string) => `*[_type == "galleryProperty" && category == "${category}"] | order(featured desc, displayOrder asc, _createdAt desc) {
+    _id,
+    _createdAt,
+    propertyAddress,
+    "imageUrls": images[]{
+      "url": asset->url,
+      caption,
+      imageType
+    },
+    description,
+    category,
+    yearCompleted,
+    featured,
+    displayOrder
   }`
 };
 
@@ -149,6 +183,22 @@ export interface TeamMember {
   displayOrder?: number;
 }
 
+export interface GalleryProperty {
+  _id: string;
+  _createdAt: string;
+  propertyAddress: string;
+  imageUrls: Array<{
+    url: string;
+    caption?: string;
+    imageType?: 'before' | 'after' | 'progress' | 'detail';
+  }>;
+  description?: string;
+  category?: 'Residential' | 'Commercial' | 'New Construction';
+  yearCompleted?: string;
+  featured?: boolean;
+  displayOrder?: number;
+}
+
 // API functions
 export const sanityApi = {
   // Get all portfolio properties
@@ -189,6 +239,17 @@ export const sanityApi = {
       return await client.fetch(queries.teamMembers);
     } catch (error) {
       console.error('Error fetching team members:', error);
+      return [];
+    }
+  },
+
+  // Get gallery properties (new structure)
+  async getGalleryProperties(category?: string): Promise<GalleryProperty[]> {
+    try {
+      const query = category ? queries.galleryPropertiesByCategory(category) : queries.galleryProperties;
+      return await client.fetch(query);
+    } catch (error) {
+      console.error('Error fetching gallery properties:', error);
       return [];
     }
   }

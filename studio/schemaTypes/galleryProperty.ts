@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'galleryItem',
-  title: 'Gallery Item',
+  name: 'galleryProperty',
+  title: 'Gallery Property',
   type: 'document',
   fields: [
     defineField({
@@ -22,14 +22,21 @@ export default defineType({
             name: 'caption',
             type: 'string',
             title: 'Caption',
-            description: 'Optional caption for this image',
+            description: 'Optional caption for this image (e.g., "Kitchen - Before", "Living Room - After")',
           },
           {
-            name: 'isBefore',
-            type: 'boolean',
-            title: 'Is Before Image?',
-            description: 'Check if this is a "before" image',
-            initialValue: false,
+            name: 'imageType',
+            type: 'string',
+            title: 'Image Type',
+            options: {
+              list: [
+                {title: 'Before', value: 'before'},
+                {title: 'After', value: 'after'},
+                {title: 'Progress', value: 'progress'},
+                {title: 'Detail', value: 'detail'},
+              ],
+            },
+            initialValue: 'after',
           }
         ],
         options: {
@@ -55,6 +62,7 @@ export default defineType({
           {title: 'New Construction', value: 'New Construction'},
         ],
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'yearCompleted',
@@ -68,6 +76,13 @@ export default defineType({
       description: 'Show this property at the top of the gallery',
       initialValue: false,
     }),
+    defineField({
+      name: 'displayOrder',
+      title: 'Display Order',
+      type: 'number',
+      description: 'Lower numbers appear first',
+      initialValue: 0,
+    }),
   ],
   preview: {
     select: {
@@ -76,4 +91,15 @@ export default defineType({
       media: 'images.0',
     },
   },
+  orderings: [
+    {
+      title: 'Display Order',
+      name: 'displayOrderAsc',
+      by: [
+        {field: 'featured', direction: 'desc'},
+        {field: 'displayOrder', direction: 'asc'},
+        {field: '_createdAt', direction: 'desc'}
+      ]
+    }
+  ],
 })

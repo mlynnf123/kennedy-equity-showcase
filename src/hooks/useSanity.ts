@@ -34,3 +34,11 @@ export const useTeamMembers = () => {
     staleTime: 0, // No caching - always fetch fresh data
   });
 };
+
+export const useGalleryProperties = (category?: string) => {
+  return useQuery({
+    queryKey: ['galleryProperties', category],
+    queryFn: () => sanityApi.getGalleryProperties(category),
+    staleTime: 0, // No caching - always fetch fresh data
+  });
+};
