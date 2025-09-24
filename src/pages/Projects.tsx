@@ -12,13 +12,27 @@ import tourHomesImg from "@/assets/portfolio-tour-homes.jpg";
 import modernBrickImg from "@/assets/portfolio-modern-brick.jpg";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { usePortfolioProperties } from "@/hooks/useSanity";
+import { usePortfolioProperties, useGalleryProperties } from "@/hooks/useSanity";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { FullscreenCarousel } from "@/components/ui/image-carousel";
+import { useState } from "react";
 
 const Projects = () => {
-  // Fetch portfolio data from Sanity
-  const { data: sanityProjects } = usePortfolioProperties();
+  const [fullscreenOpen, setFullscreenOpen] = useState(false);
+  const [fullscreenImages, setFullscreenImages] = useState<Array<{src: string; alt: string; title: string}>>([]);
+  const [fullscreenIndex, setFullscreenIndex] = useState(0);
 
-  // Fallback project data
+  // Fetch portfolio and gallery data from Sanity
+  const { data: sanityProjects } = usePortfolioProperties();
+  const { data: galleryProperties } = useGalleryProperties();
+
+  const openFullscreen = (images: Array<{src: string; alt: string; title: string}>, index: number) => {
+    setFullscreenImages(images);
+    setFullscreenIndex(index);
+    setFullscreenOpen(true);
+  };
+
+  // Fallback project data - organized for anchor navigation
   const fallbackProjects = [
     {
       _id: 'pmi-austin',
@@ -51,9 +65,12 @@ const Projects = () => {
       propertyType: 'Residential Investment',
       status: 'Active',
       action: (
-        <Link to="/gallery" className="inline-block">
-          <Button variant="cta">View Gallery</Button>
-        </Link>
+        <Button variant="cta" onClick={() => {
+          const gallerySection = document.querySelector('[data-gallery-section]');
+          if (gallerySection) {
+            gallerySection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}>View Photos</Button>
       )
     },
     {
@@ -192,20 +209,134 @@ const Projects = () => {
             and opportunities for operational value creation across property management, residential investments, and construction.
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-            {projectsToDisplay.map((project) => (
-              <ProjectCard
-                key={project._id}
-                image={project.featuredImageUrl || residentialImg}
-                name={project.name}
-                description={project.description || ""}
-                location={project.location || ""}
-                action={project.action}
-              />
-            ))}
+          {/* Property Management Section */}
+          <div id="pmi-austin" className="scroll-mt-20">
+            <h2 className="text-2xl font-semibold mb-6">Property Management</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projectsToDisplay.filter(p => p._id === 'pmi-austin').map((project) => (
+                <ProjectCard
+                  key={project._id}
+                  image={project.featuredImageUrl || residentialImg}
+                  name={project.name}
+                  description={project.description || ""}
+                  location={project.location || ""}
+                  action={project.action}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Residential Investment Section */}
+          <div id="residential" className="scroll-mt-20 mt-12">
+            <h2 className="text-2xl font-semibold mb-6">Residential Investments</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projectsToDisplay.filter(p => ['flip-homes', 'buy-hold', 'co-living', 'sober-living'].includes(p._id)).map((project) => (
+                <div key={project._id} id={project._id}>
+                  <ProjectCard
+                    image={project.featuredImageUrl || residentialImg}
+                    name={project.name}
+                    description={project.description || ""}
+                    location={project.location || ""}
+                    action={project.action}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Construction Section */}
+          <div id="construction" className="scroll-mt-20 mt-12">
+            <h2 className="text-2xl font-semibold mb-6">Construction Projects</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projectsToDisplay.filter(p => ['remodeled-homes', 'tour-homes', 'custom-construction'].includes(p._id)).map((project) => (
+                <div key={project._id} id={project._id}>
+                  <ProjectCard
+                    image={project.featuredImageUrl || residentialImg}
+                    name={project.name}
+                    description={project.description || ""}
+                    location={project.location || ""}
+                    action={project.action}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
+
+        {/* Property Gallery Section */}
+        {galleryProperties && galleryProperties.length > 0 && (
+          <section className="container mt-16" data-gallery-section>
+            <div className="max-w-4xl mx-auto text-center mb-10">
+              <h2 className="text-3xl font-normal mb-4">Property Gallery</h2>
+              <p className="text-muted-foreground text-lg">
+                Explore our completed property transformations across Austin and surrounding areas.
+              </p>
+            </div>
+
+            <div className="space-y-12">
+              {galleryProperties.map((property) => {
+                const images = property.imageUrls || [];
+                const imageObjects = images.map((img: string, idx: number) => ({
+                  src: img,
+                  alt: `${property.propertyAddress} - Image ${idx + 1}`,
+                  title: `${property.propertyAddress} - Image ${idx + 1}`
+                }));
+
+                return (
+                  <div key={property._id} className="bg-card border border-border rounded-lg p-6">
+                    <div className="text-center mb-6">
+                      <h3 className="text-2xl font-semibold">{property.propertyAddress}</h3>
+                      {property.description && (
+                        <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
+                          {property.description}
+                        </p>
+                      )}
+                      {property.yearCompleted && (
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Completed: {property.yearCompleted}
+                        </p>
+                      )}
+                    </div>
+
+                    {images.length > 0 && (
+                      <Carousel className="w-full max-w-4xl mx-auto">
+                        <CarouselContent>
+                          {images.map((imgUrl: string, index: number) => (
+                            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                              <div className="p-1">
+                                <img
+                                  src={imgUrl}
+                                  alt={`${property.propertyAddress} - Image ${index + 1}`}
+                                  className="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-80 transition-opacity"
+                                  onClick={() => openFullscreen(imageObjects, index)}
+                                />
+                              </div>
+                            </CarouselItem>
+                          ))}
+                        </CarouselContent>
+                        {images.length > 3 && (
+                          <>
+                            <CarouselPrevious />
+                            <CarouselNext />
+                          </>
+                        )}
+                      </Carousel>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
       </main>
+
+      <FullscreenCarousel
+        images={fullscreenImages}
+        initialIndex={fullscreenIndex}
+        isOpen={fullscreenOpen}
+        onClose={() => setFullscreenOpen(false)}
+      />
+
       <Footer />
     </div>
   );

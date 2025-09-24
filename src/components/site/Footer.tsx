@@ -15,7 +15,6 @@ export const Footer = () => {
           <h4 className="text-sm font-semibold mb-2">Company</h4>
           <ul className="space-y-2 text-sm">
             <li><Link className="hover:underline" to="/about">About</Link></li>
-            <li><Link className="hover:underline" to="/gallery">Gallery</Link></li>
             <li><Link className="hover:underline" to="/projects">Projects</Link></li>
             <li><Link className="hover:underline" to="/contact">Contact</Link></li>
           </ul>
@@ -23,9 +22,8 @@ export const Footer = () => {
         <div>
           <h4 className="text-sm font-semibold mb-2">Services</h4>
           <ul className="space-y-2 text-sm">
-            <li><Link className="hover:underline" to="/gallery">Flip Homes</Link></li>
-            <li><Link className="hover:underline" to="/new-construction">New Construction</Link></li>
             <li><Link className="hover:underline" to="/projects">All Projects</Link></li>
+            <li><Link className="hover:underline" to="/new-construction">New Construction</Link></li>
           </ul>
         </div>
         <div>

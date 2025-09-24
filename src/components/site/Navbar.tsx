@@ -16,19 +16,23 @@ const navItems = [{
 }];
 
 const projectItems = [{
-  to: "/projects",
-  label: "All Projects"
+  to: "/projects#pmi-austin",
+  label: "PMI Austin"
 }, {
-  to: "/gallery",
-  label: "Gallery"
-}, {
-  to: "/new-construction",
-  label: "New Construction"
-}];
-
-const galleryItems = [{
-  to: "/gallery",
+  to: "/projects#flip-homes",
   label: "Flip Homes"
+}, {
+  to: "/projects#buy-hold",
+  label: "Buy and Hold"
+}, {
+  to: "/projects#co-living",
+  label: "Co-Living Spaces"
+}, {
+  to: "/projects#sober-living",
+  label: "Lions Den Sober Living"
+}, {
+  to: "/projects#construction",
+  label: "Construction Projects"
 }, {
   to: "/new-construction",
   label: "New Construction"
@@ -36,7 +40,6 @@ const galleryItems = [{
 export const Navbar = () => {
   const { pathname } = useLocation();
   const [projectsOpen, setProjectsOpen] = useState(false);
-  const [galleryOpen, setGalleryOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   return <header className="sticky top-0 z-40 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
@@ -48,24 +51,6 @@ export const Navbar = () => {
           {navItems.map(item => <Link key={item.to} to={item.to} className={`text-sm transition-colors hover:text-foreground/80 ${pathname === item.to ? "text-foreground" : "text-foreground/70"}`}>
               {item.label}
             </Link>)}
-          
-          <DropdownMenu open={galleryOpen} onOpenChange={setGalleryOpen}>
-            <DropdownMenuTrigger asChild>
-              <button className={`flex items-center gap-1 text-sm transition-colors hover:text-foreground/80 ${pathname === "/gallery" || pathname === "/new-construction" ? "text-foreground" : "text-foreground/70"}`}>
-                Gallery
-                <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${galleryOpen ? 'rotate-180' : ''}`} />
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 bg-background border border-border shadow-lg z-50">
-              {galleryItems.map(item => (
-                <DropdownMenuItem key={item.to} asChild>
-                  <Link to={item.to} className="w-full text-sm hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                    {item.label}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
           
           <DropdownMenu open={projectsOpen} onOpenChange={setProjectsOpen}>
             <DropdownMenuTrigger asChild>
@@ -110,22 +95,6 @@ export const Navbar = () => {
                     {item.label}
                   </Link>
                 ))}
-                
-                <div className="flex flex-col gap-3">
-                  <span className="text-lg font-medium text-foreground">Gallery</span>
-                  <div className="flex flex-col gap-3 ml-4">
-                    {galleryItems.map(item => (
-                      <Link 
-                        key={item.to} 
-                        to={item.to} 
-                        className="text-base text-foreground/70 hover:text-foreground/80 transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
                 
                 <div className="flex flex-col gap-3">
                   <span className="text-lg font-medium text-foreground">Projects</span>
