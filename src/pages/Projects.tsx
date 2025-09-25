@@ -10,6 +10,15 @@ import soberLivingImg from "@/assets/portfolio-sober-living.png";
 import remodeledImg from "@/assets/portfolio-remodeled.jpg";
 import tourHomesImg from "@/assets/portfolio-tour-homes.jpg";
 import modernBrickImg from "@/assets/portfolio-modern-brick.jpg";
+
+// Import gallery images
+import rosedaleExteriorAfter from "@/assets/gallery-rosedale-exterior-after-new.jpg";
+import rosedaleKitchenAfter from "@/assets/gallery-rosedale-kitchen-after-new.jpg";
+import rosedaleLivingAfter from "@/assets/gallery-rosedale-living-after-new.jpg";
+import cupidExteriorAfter from "@/assets/gallery-cupid-exterior-after-new.webp";
+import cupidKitchenAfter from "@/assets/gallery-cupid-kitchen-after-new.webp";
+import cupidLivingAfter from "@/assets/gallery-cupid-living-after-new.webp";
+import yauponKitchenAfter from "@/assets/gallery-yaupon-kitchen-after-new.jpg";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { usePortfolioProperties, useGalleryProperties } from "@/hooks/useSanity";
@@ -25,6 +34,31 @@ const Projects = () => {
   // Fetch portfolio and gallery data from Sanity
   const { data: sanityProjects } = usePortfolioProperties();
   const { data: galleryProperties } = useGalleryProperties();
+
+  // Fallback gallery data
+  const fallbackGalleryData = [
+    {
+      _id: 'rosedale-property',
+      propertyAddress: '4506 Rosedale Ave',
+      imageUrls: [rosedaleExteriorAfter, rosedaleKitchenAfter, rosedaleLivingAfter],
+      description: 'Beautiful craftsman renovation with modern updates throughout',
+      yearCompleted: '2023'
+    },
+    {
+      _id: 'cupid-property', 
+      propertyAddress: '3210 Cupid Dr',
+      imageUrls: [cupidExteriorAfter, cupidKitchenAfter, cupidLivingAfter],
+      description: 'Strategic renovation of this South Austin brick home featuring updated interior spaces',
+      yearCompleted: '2023'
+    },
+    {
+      _id: 'yaupon-property',
+      propertyAddress: '1900 Yaupon Valley Rd', 
+      imageUrls: [yauponKitchenAfter],
+      description: 'Hill country home renovation with modern kitchen and living spaces',
+      yearCompleted: '2023'
+    }
+  ];
 
   const openFullscreen = (images: Array<{src: string; alt: string; title: string}>, index: number) => {
     setFullscreenImages(images);
@@ -68,7 +102,7 @@ const Projects = () => {
         <Button variant="cta" onClick={() => {
           const gallerySection = document.querySelector('[data-gallery-section]');
           if (gallerySection) {
-            gallerySection.scrollIntoView({ behavior: 'smooth' });
+            gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }}>View Photos</Button>
       )
@@ -158,9 +192,12 @@ const Projects = () => {
           );
         } else if (project.name === "Flip Homes") {
           action = (
-            <Link to="/gallery" className="inline-block">
-              <Button variant="cta">View Gallery</Button>
-            </Link>
+            <Button variant="cta" onClick={() => {
+              const gallerySection = document.querySelector('[data-gallery-section]');
+              if (gallerySection) {
+                gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}>View Photos</Button>
           );
         } else if (project.name === "Co-Living Spaces") {
           action = (
@@ -264,8 +301,7 @@ const Projects = () => {
         </section>
 
         {/* Property Gallery Section */}
-        {galleryProperties && galleryProperties.length > 0 && (
-          <section className="container mt-16" data-gallery-section>
+        <section className="container mt-16" data-gallery-section>
             <div className="max-w-4xl mx-auto text-center mb-10">
               <h2 className="text-3xl font-normal mb-4">Property Gallery</h2>
               <p className="text-muted-foreground text-lg">
@@ -274,7 +310,7 @@ const Projects = () => {
             </div>
 
             <div className="space-y-12">
-              {galleryProperties.map((property) => {
+              {(galleryProperties && galleryProperties.length > 0 ? galleryProperties : fallbackGalleryData).map((property) => {
                 const images = property.imageUrls || [];
                 const imageObjects = images.map((img: string, idx: number) => ({
                   src: img,
@@ -326,8 +362,7 @@ const Projects = () => {
                 );
               })}
             </div>
-          </section>
-        )}
+        </section>
       </main>
 
       <FullscreenCarousel
