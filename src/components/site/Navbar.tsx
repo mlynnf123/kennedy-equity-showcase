@@ -26,7 +26,7 @@ const projectItems = [{
   label: "Buy and Hold"
 }, {
   to: "/projects#co-living",
-  label: "Co-Living Spaces"
+  label: "Co-Living Housing"
 }, {
   to: "/projects#sober-living",
   label: "Lions Den Sober Living"

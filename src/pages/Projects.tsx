@@ -119,8 +119,8 @@ const Projects = () => {
     },
     {
       _id: 'co-living',
-      name: 'Co-Living Spaces',
-      description: 'Modern co-living spaces for professionals and students.',
+      name: 'Co-Living Housing',
+      description: 'Modern co-living housing for professionals and students.',
       location: 'Greater Austin and Surrounding Areas',
       sector: 'Co-Living',
       featuredImageUrl: coLivingImg,
@@ -199,7 +199,7 @@ const Projects = () => {
               }
             }}>View Photos</Button>
           );
-        } else if (project.name === "Co-Living Spaces") {
+        } else if (project.name === "Co-Living Housing") {
           action = (
             <a href="https://assetst.com/" target="_blank" rel="noopener noreferrer" className="inline-block">
               <Button variant="cta">Visit website</Button>
