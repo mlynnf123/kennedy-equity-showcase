@@ -22,20 +22,11 @@ const projectItems = [{
   to: "/projects#avenue-b",
   label: "Avenue B"
 }, {
-  to: "/projects#buy-hold",
-  label: "Buy and Hold"
-}, {
   to: "/projects#co-living",
   label: "Co-Living Housing"
 }, {
   to: "/projects#sober-living",
   label: "Lions Den Sober Living"
-}, {
-  to: "/projects#construction",
-  label: "Construction Projects"
-}, {
-  to: "/new-construction",
-  label: "New Construction"
 }];
 export const Navbar = () => {
   const { pathname } = useLocation();

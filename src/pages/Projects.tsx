@@ -4,12 +4,8 @@ import SEO from "@/components/SEO";
 import ProjectCard from "@/components/site/ProjectCard";
 import residentialImg from "@/assets/portfolio-residential.jpg";
 import flipHomesImg from "@/assets/portfolio-flip-homes.jpg";
-import buyHoldImg from "@/assets/portfolio-buy-hold.jpg";
 import coLivingImg from "@/assets/portfolio-co-living.jpg";
 import soberLivingImg from "@/assets/portfolio-sober-living.png";
-import remodeledImg from "@/assets/portfolio-remodeled.jpg";
-import tourHomesImg from "@/assets/portfolio-tour-homes.jpg";
-import modernBrickImg from "@/assets/portfolio-modern-brick.jpg";
 
 // Import gallery images
 import rosedaleExteriorAfter from "@/assets/gallery-rosedale-exterior-after-new.jpg";
@@ -108,16 +104,6 @@ const Projects = () => {
       )
     },
     {
-      _id: 'buy-hold',
-      name: 'Buy and Hold Properties',
-      description: 'Long-term rental properties generating consistent cash flow.',
-      location: 'Greater Austin and Surrounding Areas',
-      sector: 'Rental Properties',
-      featuredImageUrl: buyHoldImg,
-      propertyType: 'Rental Properties',
-      status: 'Active'
-    },
-    {
       _id: 'co-living',
       name: 'Co-Living Housing',
       description: 'Modern co-living housing for professionals and students.',
@@ -147,36 +133,6 @@ const Projects = () => {
         </a>
       )
     },
-    {
-      _id: 'remodeled-homes',
-      name: 'Remodelled Homes',
-      description: 'Complete home renovations transforming properties into modern living spaces.',
-      location: 'Greater Austin and Surrounding Areas',
-      sector: 'Construction',
-      featuredImageUrl: remodeledImg,
-      propertyType: 'Renovation Projects',
-      status: 'Active'
-    },
-    {
-      _id: 'tour-homes',
-      name: 'Tour Homes',
-      description: 'Showcase homes demonstrating our construction quality and design capabilities.',
-      location: 'Greater Austin and Surrounding Areas',
-      sector: 'Construction',
-      featuredImageUrl: tourHomesImg,
-      propertyType: 'Showcase Properties',
-      status: 'Active'
-    },
-    {
-      _id: 'custom-construction',
-      name: 'New Custom Construction',
-      description: 'Custom homes tailored to client specifications with premium finishes.',
-      location: 'Greater Austin and Surrounding Areas',
-      sector: 'Construction',
-      featuredImageUrl: modernBrickImg,
-      propertyType: 'Custom Homes',
-      status: 'Active'
-    }
   ];
 
   // Use Sanity data if available, otherwise use fallback
@@ -267,25 +223,7 @@ const Projects = () => {
           <div id="residential" className="scroll-mt-20 mt-12">
             <h2 className="text-2xl font-semibold mb-6">Residential Investments</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projectsToDisplay.filter(p => ['avenue-b', 'buy-hold', 'co-living', 'sober-living'].includes(p._id)).map((project) => (
-                <div key={project._id} id={project._id}>
-                  <ProjectCard
-                    image={project.featuredImageUrl || residentialImg}
-                    name={project.name}
-                    description={project.description || ""}
-                    location={project.location || ""}
-                    action={project.action}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Construction Section */}
-          <div id="construction" className="scroll-mt-20 mt-12">
-            <h2 className="text-2xl font-semibold mb-6">Construction Projects</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projectsToDisplay.filter(p => ['remodeled-homes', 'tour-homes', 'custom-construction'].includes(p._id)).map((project) => (
+              {projectsToDisplay.filter(p => ['avenue-b', 'co-living', 'sober-living'].includes(p._id)).map((project) => (
                 <div key={project._id} id={project._id}>
                   <ProjectCard
                     image={project.featuredImageUrl || residentialImg}
