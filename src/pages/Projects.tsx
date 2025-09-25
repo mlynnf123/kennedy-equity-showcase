@@ -90,8 +90,8 @@ const Projects = () => {
       )
     },
     {
-      _id: 'flip-homes',
-      name: 'Flip Homes',
+      _id: 'avenue-b',
+      name: 'Avenue B',
       description: 'Strategic property renovations and resales in high-demand areas.',
       location: 'Greater Austin and Surrounding Areas',
       sector: 'Residential Investment',
@@ -190,7 +190,7 @@ const Projects = () => {
               <Button variant="cta">Visit PMI Austin</Button>
             </a>
           );
-        } else if (project.name === "Flip Homes") {
+        } else if (project.name === "Avenue B") {
           action = (
             <Button variant="cta" onClick={() => {
               const gallerySection = document.querySelector('[data-gallery-section]');
@@ -267,7 +267,7 @@ const Projects = () => {
           <div id="residential" className="scroll-mt-20 mt-12">
             <h2 className="text-2xl font-semibold mb-6">Residential Investments</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projectsToDisplay.filter(p => ['flip-homes', 'buy-hold', 'co-living', 'sober-living'].includes(p._id)).map((project) => (
+              {projectsToDisplay.filter(p => ['avenue-b', 'buy-hold', 'co-living', 'sober-living'].includes(p._id)).map((project) => (
                 <div key={project._id} id={project._id}>
                   <ProjectCard
                     image={project.featuredImageUrl || residentialImg}

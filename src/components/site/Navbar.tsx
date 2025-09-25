@@ -19,8 +19,8 @@ const projectItems = [{
   to: "/projects#pmi-austin",
   label: "PMI Austin"
 }, {
-  to: "/projects#flip-homes",
-  label: "Flip Homes"
+  to: "/projects#avenue-b",
+  label: "Avenue B"
 }, {
   to: "/projects#buy-hold",
   label: "Buy and Hold"
