@@ -209,7 +209,7 @@ const Projects = () => {
               {projectsToDisplay.filter(p => p._id === 'pmi-austin').map((project) => (
                 <ProjectCard
                   key={project._id}
-                  image={project.featuredImageUrl || residentialImg}
+                  image={(project as any).featuredImageUrl || (project as any).featuredImage || residentialImg}
                   name={project.name}
                   description={project.description || ""}
                   location={project.location || ""}
@@ -226,7 +226,7 @@ const Projects = () => {
               {projectsToDisplay.filter(p => ['avenue-b', 'co-living', 'sober-living'].includes(p._id)).map((project) => (
                 <div key={project._id} id={project._id}>
                   <ProjectCard
-                    image={project.featuredImageUrl || residentialImg}
+                    image={(project as any).featuredImageUrl || (project as any).featuredImage || residentialImg}
                     name={project.name}
                     description={project.description || ""}
                     location={project.location || ""}
